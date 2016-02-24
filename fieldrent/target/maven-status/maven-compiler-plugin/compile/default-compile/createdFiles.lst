@@ -1,0 +1,4 @@
+br/com/fieldrent/controller/CompanyController.class
+br/com/fieldrent/controller/AplicationController.class
+br/com/fieldrent/model/Company.class
+br/com/fieldrent/FieldrentApplication.class
