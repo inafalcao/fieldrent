@@ -14,10 +14,10 @@ import java.util.List;
  * Created by inafalcao on 1/18/16.
  */
 
-@RestController(value = "company")
+//@RestController(value = "company")
 public class CompanyController {
 
-    @Autowired
+    /*@Autowired
     private CompanyRepository companyRepository;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -32,5 +32,5 @@ public class CompanyController {
         companyRepository.save(c1);
 
     }
-
+*/
 }

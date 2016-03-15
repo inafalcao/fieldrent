@@ -1,22 +1,32 @@
 package br.com.fieldrent.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by inafalcao on 1/17/16.
  */
 @Entity
 @Table
-public class Company {
+public class Company extends br.com.fieldrent.model.Entity {
 
-    @Id
-    @GeneratedValue()
-    private Long id;
-
+    @NotNull
+    @NotEmpty
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @NotNull
+    @NotEmpty
+    @Column(nullable = false, unique = true)
+    private String cnpj;
+
+    // TODO: maybe better not to have this collections
+    @OneToMany(mappedBy="company")
+    private List<Field> fields;
 
     public String getName() {
         return name;
@@ -26,11 +36,12 @@ public class Company {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
+
 }

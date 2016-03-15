@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AplicationController {
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public Company root() {
         Company c = new Company();
         c.setName("ina linda");
 
         return c;
-    }
+    }*/
 
 }
