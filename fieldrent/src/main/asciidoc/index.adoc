@@ -1,0 +1,176 @@
+= Fieldrent REST API Guide
+Inaciane Monteiro;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+REST Fieldrent tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, not including partial updates. The entire entity must be sent.
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+REST Fieldrent tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[overview-errors]]
+== Errors
+
+Whenever an error response (status code >= 400) is returned, the body will contain a JSON object
+that describes the problem. The error object has the following structure:
+
+include::{snippets}/error-example/response-fields.adoc[]
+
+For example, a request that attempts to apply a non-existent tag to a note will produce a
+`400 Bad Request` response:
+
+include::{snippets}/error-example/http-response.adoc[]
+
+
+[[resources]]
+= Resources
+
+
+[[resources-client]]
+== Client
+
+The Client resource represents the mobile application user.
+
+[[resources-client-list]]
+=== Listing clients
+
+A `GET` request will list all of the service's clients.
+
+==== Response structure
+
+include::{snippets}/list-client/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-client/http-response.adoc[]
+
+
+
+
+[[resources-client-get]]
+=== Show client by id
+
+A `GET` request will show one client fetched by its Id.
+
+Note that password field is not sent back on this request.
+
+==== Response structure
+
+include::{snippets}/get-client/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-client/http-response.adoc[]
+
+
+
+[[resources-client-create]]
+=== Creating clients
+
+A `POST` is used to create a Client resource.
+
+==== Request structure
+
+include::{snippets}/create-client/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-client/http-response.adoc[]
+
+
+[[resources-client-update]]
+=== Updating clients by id
+
+A `PUT` is used to update a Client resource.
+
+==== Path parameters
+
+include::{snippets}/update-client/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-client/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-client/http-response.adoc[]
+
+
+[[resources-client-update]]
+=== Deleting clients by id
+
+A `DELETE` is used to remove a Client resource.
+
+==== Example request
+
+include::{snippets}/delete-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-client/http-response.adoc[]
