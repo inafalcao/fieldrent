@@ -50,4 +50,6 @@ public class Player extends br.com.fieldrent.model.Entity {
     public void setClient(Client client) {
         this.client = client;
     }
+
+
 }

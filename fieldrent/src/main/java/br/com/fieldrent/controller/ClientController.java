@@ -14,29 +14,28 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/client")
 public class ClientController {
 
     @Autowired
     private ClientRepository clientRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public List<Client> list() {
         return clientRepository.findAll();
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/client/{id}", method = RequestMethod.GET)
     public Client getOne(@PathVariable("id") Long id) {
         return clientRepository.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/client", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody  Client client) {
         clientRepository.save(client);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/client/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id, @RequestBody Client client) {
         Client existingClient = clientRepository.findOne(id);
@@ -47,13 +46,14 @@ public class ClientController {
         clientRepository.save(existingClient);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/client/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {
         clientRepository.delete(id);
     }
 
-    @RequestMapping(value = "/email/{email}", method = RequestMethod.DELETE)
+    // TODO: document delete client by e-mail
+    @RequestMapping(value = "/client/email/{email}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteByEmail(@PathVariable("email") String email) {
         clientRepository.deleteByEmail(email);

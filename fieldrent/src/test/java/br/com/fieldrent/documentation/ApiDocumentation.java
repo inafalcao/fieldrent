@@ -2,8 +2,11 @@ package br.com.fieldrent.documentation;
 
 
 import br.com.fieldrent.FieldrentApplication;
+import br.com.fieldrent.mock.TestMock;
 import br.com.fieldrent.model.Client;
+import br.com.fieldrent.model.Company;
 import br.com.fieldrent.repository.ClientRepository;
+import br.com.fieldrent.repository.CompanyRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.junit.Before;
@@ -65,9 +68,16 @@ public class ApiDocumentation {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
+    TestMock testMock;
+
     @Before
     public void setUp() {
-        createClients();
+        testMock.createClients();
+        testMock.createCompanies();
 
         this.document = document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()));
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
@@ -79,9 +89,9 @@ public class ApiDocumentation {
     /////////////////| Client |////////////////
 
     @Test
-    public void listClient() throws Exception {
+    public void listClients() throws Exception {
 
-        this.mockMvc.perform(get("/client").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/clients").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -200,15 +210,82 @@ public class ApiDocumentation {
                 );
     }
 
-    private void createClients() {
-        Client c1 = new Client("Client1", "passwd1", "client1@email.com", "99999999", false, "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");
-        c1.generatePhotoLobFromBase64Photo();
-        Client c2 = new Client("Client2", "passwd2", "client2@email.com", "00000000", false, "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");
-        c2.generatePhotoLobFromBase64Photo();
+    /////////////////| Company |////////////////
 
-        clientRepository.save(c1);
-        clientRepository.save(c2);
+    @Test
+    public void listCompanies() throws Exception {
+
+        this.mockMvc.perform(get("/companies").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].name").description(""),
+                                fieldWithPath("[].cnpj").description(""),
+                                fieldWithPath("[].address").description(""),
+                                fieldWithPath("[].phone").description(""),
+                                fieldWithPath("[].photo")
+                                        .type(JsonFieldType.STRING)
+                                        .description("Base64 encoded photo")
+                        )
+                        )
+                );
+
     }
+
+    @Test
+    public void getCompany() throws Exception {
+
+        Long companyId = companyRepository.findAll().get(0).getId();
+        this.mockMvc.perform(get("/company/{id}", companyId).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("id").description("Database id."),
+                                fieldWithPath("name").description(""),
+                                fieldWithPath("cnpj").description(""),
+                                fieldWithPath("address").description(""),
+                                fieldWithPath("phone").description(""),
+                                fieldWithPath("photo")
+                                        .type(JsonFieldType.STRING)
+                                        .description("Base64 encoded photo")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                    pathParameters(
+                            parameterWithName("id").description("The database entity id"))
+                    )
+                );
+    }
+
+    @Test
+    public void createCompany() throws Exception {
+        Company mock = testMock.createCompany();
+
+        ConstrainedFields fields = new ConstrainedFields(Company.class);
+
+        this.mockMvc.perform(post("/company")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(mock)))
+                .andExpect(status().isCreated())
+                .andDo(this.document.snippets(
+                        requestFields(
+                                fields.withPath("name").description(""),
+                                fields.withPath("cnpj").description(""),
+                                fields.withPath("address").description(""),
+                                fields.withPath("phone").description(""),
+                                fields.withPath("photo")
+                                        .type(JsonFieldType.STRING)
+                                        .description("Base64 encoded photo")
+                        )
+                        )
+                );
+    }
+
+
+    ////////////////////////////////////////////
+
 
     private static class ConstrainedFields {
 

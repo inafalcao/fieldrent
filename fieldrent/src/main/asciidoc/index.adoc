@@ -58,6 +58,7 @@ use of HTTP status codes.
 | The requested resource did not exist
 |===
 
+////
 [[overview-errors]]
 == Errors
 
@@ -70,7 +71,7 @@ For example, a request that attempts to apply a non-existent tag to a note will 
 `400 Bad Request` response:
 
 include::{snippets}/error-example/http-response.adoc[]
-
+////
 
 [[resources]]
 = Resources
@@ -88,16 +89,15 @@ A `GET` request will list all of the service's clients.
 
 ==== Response structure
 
-include::{snippets}/list-client/response-fields.adoc[]
+include::{snippets}/list-clients/response-fields.adoc[]
 
 ==== Example request
 
-include::{snippets}/list-client/curl-request.adoc[]
+include::{snippets}/list-clients/curl-request.adoc[]
 
 ==== Example response
 
-include::{snippets}/list-client/http-response.adoc[]
-
+include::{snippets}/list-clients/http-response.adoc[]
 
 
 
@@ -107,6 +107,10 @@ include::{snippets}/list-client/http-response.adoc[]
 A `GET` request will show one client fetched by its Id.
 
 Note that password field is not sent back on this request.
+
+==== Path parameters
+
+include::{snippets}/get-client/path-parameters.adoc[]
 
 ==== Response structure
 
@@ -123,7 +127,7 @@ include::{snippets}/get-client/http-response.adoc[]
 
 
 [[resources-client-create]]
-=== Creating clients
+=== Creating client
 
 A `POST` is used to create a Client resource.
 
@@ -138,6 +142,7 @@ include::{snippets}/create-client/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/create-client/http-response.adoc[]
+
 
 
 [[resources-client-update]]
@@ -162,10 +167,16 @@ include::{snippets}/update-client/curl-request.adoc[]
 include::{snippets}/update-client/http-response.adoc[]
 
 
-[[resources-client-update]]
+
+[[resources-client-delete]]
 === Deleting clients by id
 
 A `DELETE` is used to remove a Client resource.
+
+==== Path parameters
+
+include::{snippets}/delete-company/path-parameters.adoc[]
+
 
 ==== Example request
 
@@ -174,3 +185,112 @@ include::{snippets}/delete-client/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/delete-client/http-response.adoc[]
+
+
+
+
+
+[[resources-company]]
+== Company
+
+
+[[resources-companies-list]]
+=== Listing companies
+
+A `GET` request will list all of the service's companies.
+
+==== Response structure
+
+include::{snippets}/list-companies/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-companies/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-companies/http-response.adoc[]
+
+
+
+[[resources-company-get]]
+=== Show company by id
+
+A `GET` request will show one company fetched by its Id.
+
+==== Path parameters
+
+include::{snippets}/get-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-company/http-response.adoc[]
+
+
+
+[[resources-company-create]]
+=== Creating company
+
+A `POST` is used to create a Company resource.
+
+==== Request structure
+
+include::{snippets}/create-company/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-company/http-response.adoc[]
+
+
+
+[[resources-company-update]]
+=== Updating company by id
+
+A `PUT` is used to update a Company resource.
+
+==== Path parameters
+
+include::{snippets}/update-company/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-company/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-company/http-response.adoc[]
+
+
+
+[[resources-company-delete]]
+=== Deleting clients by id
+
+A `DELETE` is used to remove a Company resource.
+
+==== Path parameters
+
+include::{snippets}/delete-company/path-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/delete-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-company/http-response.adoc[]
