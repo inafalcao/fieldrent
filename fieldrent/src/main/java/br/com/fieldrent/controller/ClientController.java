@@ -29,6 +29,11 @@ public class ClientController {
         return clientRepository.findOne(id);
     }
 
+    @RequestMapping(value="/client/email/{email:.+}", method = RequestMethod.GET)
+    public Client getByEmail(@PathVariable("email") String email) {
+        return clientRepository.findByEmail(email);
+    }
+
     @RequestMapping(value = "/client", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody  Client client) {
@@ -52,8 +57,7 @@ public class ClientController {
         clientRepository.delete(id);
     }
 
-    // TODO: document delete client by e-mail
-    @RequestMapping(value = "/client/email/{email}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/client/email/{email:.+}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteByEmail(@PathVariable("email") String email) {
         clientRepository.deleteByEmail(email);

@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 @Table
 public class Schedule extends br.com.fieldrent.model.Entity {
 
-    @NotNull
+    /*@NotNull
     @ManyToOne()
     @JoinColumn(name="field_id")
-    private Field field;
+    private Field field;*/
 
     @NotNull
     @Column(name = "start_time")
@@ -32,6 +32,39 @@ public class Schedule extends br.com.fieldrent.model.Entity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime endTime;
 
-    @Column(name = "busy")
-    private Boolean isBusy;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private ScheduleStatus status;
+
+    public Schedule(LocalTime startTime, LocalTime endTime, ScheduleStatus status) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.status = status;
+    }
+
+    public Schedule() {}
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public ScheduleStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ScheduleStatus status) {
+        this.status = status;
+    }
 }

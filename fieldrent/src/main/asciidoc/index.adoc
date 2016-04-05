@@ -126,6 +126,31 @@ include::{snippets}/get-client/http-response.adoc[]
 
 
 
+[[resources-client-get-by-email]]
+=== Show client by e-mail
+
+A `GET` request will show one client fetched by its unique e-mail.
+
+Note that password field is not sent back on this request.
+
+==== Path parameters
+
+include::{snippets}/get-client-by-email/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-client-by-email/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-client-by-email/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-client-by-email/http-response.adoc[]
+
+
+
 [[resources-client-create]]
 === Creating client
 
@@ -169,13 +194,13 @@ include::{snippets}/update-client/http-response.adoc[]
 
 
 [[resources-client-delete]]
-=== Deleting clients by id
+=== Deleting client by id
 
 A `DELETE` is used to remove a Client resource.
 
 ==== Path parameters
 
-include::{snippets}/delete-company/path-parameters.adoc[]
+include::{snippets}/delete-client/path-parameters.adoc[]
 
 
 ==== Example request
@@ -185,6 +210,26 @@ include::{snippets}/delete-client/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/delete-client/http-response.adoc[]
+
+
+
+[[resources-client-delete-by-email]]
+=== Deleting client by e-mail
+
+A `DELETE` is used to remove a Client resource.
+
+==== Path parameters
+
+include::{snippets}/delete-client-by-email/path-parameters.adoc[]
+
+
+==== Example request
+
+include::{snippets}/delete-client-by-email/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-client-by-email/http-response.adoc[]
 
 
 
@@ -279,7 +324,7 @@ include::{snippets}/update-company/http-response.adoc[]
 
 
 [[resources-company-delete]]
-=== Deleting clients by id
+=== Deleting company by id
 
 A `DELETE` is used to remove a Company resource.
 
@@ -294,3 +339,113 @@ include::{snippets}/delete-company/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/delete-company/http-response.adoc[]
+
+
+
+
+
+
+[[resources-field]]
+== Field
+
+
+[[resources-fiels-list]]
+=== Listing fields
+
+A `GET` request will list all of the service's fields.
+
+==== Response structure
+
+include::{snippets}/list-fields/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-fields/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-fields/http-response.adoc[]
+
+
+
+[[resources-field-get]]
+=== Show field by id
+
+A `GET` request will show one field fetched by its Id.
+
+==== Path parameters
+
+include::{snippets}/get-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-field/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-field/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-field/http-response.adoc[]
+
+
+
+[[resources-field-create]]
+=== Creating field
+
+A `POST` is used to create a Field resource.
+
+==== Request structure
+
+include::{snippets}/create-field/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-field/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-field/http-response.adoc[]
+
+
+
+[[resources-field-update]]
+=== Updating field by id
+
+A `PUT` is used to update a Field resource.
+
+==== Path parameters
+
+include::{snippets}/update-field/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-field/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-field/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-field/http-response.adoc[]
+
+
+
+[[resources-field-delete]]
+=== Deleting field by id
+
+A `DELETE` is used to remove a Field resource.
+
+==== Path parameters
+
+include::{snippets}/delete-field/path-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/delete-field/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-field/http-response.adoc[]

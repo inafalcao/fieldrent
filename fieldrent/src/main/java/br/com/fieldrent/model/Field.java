@@ -4,7 +4,6 @@ import br.com.fieldrent.util.ByteUtil;
 import br.com.fieldrent.util.StringUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.Base64Utils;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by inafalcao on 1/17/16.
@@ -40,8 +38,24 @@ public class Field extends br.com.fieldrent.model.Entity {
     @JoinColumn(name="company_id", nullable = false)
     private Company company;
 
-    @OneToMany(mappedBy="field")
+    @OneToMany()
+    @JoinColumn(name = "field_id")
     private List<Schedule> schedules;
+
+    public Field(String name, String photo, Company company, List<Schedule> schedules) {
+        this.name = name;
+        this.photo = photo;
+        this.company = company;
+        this.schedules = schedules;
+    }
+
+    public Field(String name, String photo, Company company) {
+        this.name = name;
+        this.photo = photo;
+        this.company = company;
+    }
+
+    public Field() {}
 
     public Company getCompany() {
         return company;
