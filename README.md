@@ -1,9 +1,9 @@
 # fieldrent
 
 ## Requirements
-Java 8
-Tomcat 8
-Maven 3.3.3
+- Java 8
+- Tomcat 8
+- Maven 3.3.3
 
 ## Run
 To generate the documentation:
