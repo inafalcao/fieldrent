@@ -7,10 +7,13 @@
 
 ## Run
 To generate the documentation:
+
 ` mvn clean install`
+
 ` mvn package `
 
 To run
+
 ` mvn spring-boot:run `
 
 Go to your browser and type
