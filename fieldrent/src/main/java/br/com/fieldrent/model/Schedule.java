@@ -1,6 +1,9 @@
 package br.com.fieldrent.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import br.com.fieldrent.serialization.ScheduleDeserializer;
+import br.com.fieldrent.serialization.ScheduleSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalTime;
 
@@ -23,13 +26,17 @@ public class Schedule extends br.com.fieldrent.model.Entity {
     @NotNull
     @Column(name = "start_time")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    @JsonSerialize(using = ScheduleSerializer.class)
+    @JsonDeserialize(using = ScheduleDeserializer.class)
     private LocalTime startTime;
 
     @NotNull
     @Column(name = "end_time")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    @JsonSerialize(using = ScheduleSerializer.class)
+    @JsonDeserialize(using = ScheduleDeserializer.class)
     private LocalTime endTime;
 
     @Column(name = "status")
