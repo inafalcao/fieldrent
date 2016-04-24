@@ -449,3 +449,47 @@ include::{snippets}/delete-field/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/delete-field/http-response.adoc[]
+
+
+
+
+
+[[resources-reservation]]
+== Reservation
+
+
+[[resources-reservations-list-by-day]]
+=== Listing reservations by day
+
+A `GET` request will list all of the service's reservations.
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-day/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-day/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-day/http-response.adoc[]
+
+
+
+[[resources-reservation-create]]
+=== Creating reservation
+
+A `POST` is used to create a Reservation resource.
+
+==== Request structure
+
+include::{snippets}/create-reservation/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-reservation/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-reservation/http-response.adoc[]

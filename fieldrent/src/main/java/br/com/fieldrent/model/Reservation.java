@@ -1,7 +1,6 @@
 package br.com.fieldrent.model;
 
-import br.com.fieldrent.ScheduleDeserializer;
-import br.com.fieldrent.ScheduleSerializer;
+import br.com.fieldrent.serialization.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -28,18 +27,20 @@ public class Reservation extends br.com.fieldrent.model.Entity {
     @NotNull
     @ManyToOne
     @JoinColumn(name="field_id", nullable = false)
+    @JsonSerialize(using = FieldResumeSerializer.class)
+    @JsonDeserialize(using = FieldResumeDeserializer.class)
     private Field field;
 
     @NotNull
     @Column(name = "date")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonSerialize(using = DateSerializer.class)
+    @JsonDeserialize(using = DateDeserializer.class)
     private DateTime date;
 
     @NotNull
     @Column(name = "start_time")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     @JsonSerialize(using = ScheduleSerializer.class)
     @JsonDeserialize(using = ScheduleDeserializer.class)
     private LocalTime startTime;
@@ -47,7 +48,6 @@ public class Reservation extends br.com.fieldrent.model.Entity {
     @NotNull
     @Column(name = "end_time")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalTime")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     @JsonSerialize(using = ScheduleSerializer.class)
     @JsonDeserialize(using = ScheduleDeserializer.class)
     private LocalTime endTime;
