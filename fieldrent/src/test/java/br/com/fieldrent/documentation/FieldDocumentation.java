@@ -1,6 +1,5 @@
 package br.com.fieldrent.documentation;
 
-
 import br.com.fieldrent.FieldrentApplication;
 import br.com.fieldrent.mock.TestMock;
 import br.com.fieldrent.model.Client;
@@ -28,9 +27,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
-
-import java.util.List;
-
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -148,7 +144,7 @@ public class FieldDocumentation {
                 );
     }
 
-    /*@Test
+    @Test
     public void updateField() throws Exception {
         Field toUpdateField = fieldRepository.findAll().get(0);
 
@@ -156,7 +152,7 @@ public class FieldDocumentation {
 
         this.mockMvc.perform(put("/field/{id}", toUpdateField.getId())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(new Gson().toJson(testMock.updateField(toUpdateField))))
+                .content(testMock.updateField(toUpdateField)))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         requestFields(
@@ -175,7 +171,7 @@ public class FieldDocumentation {
                                 parameterWithName("id").description("The database entity id"))
                         )
                 );
-    }*/
+    }
 
     @Test
     public void deleteField() throws Exception {

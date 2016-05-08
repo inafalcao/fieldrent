@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/field/5' -i -X DELETE -H 'Accept: application/json'
+----

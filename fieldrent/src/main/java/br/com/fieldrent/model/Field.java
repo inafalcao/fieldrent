@@ -38,7 +38,7 @@ public class Field extends br.com.fieldrent.model.Entity {
     @JoinColumn(name="company_id", nullable = false)
     private Company company;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "field_id")
     private List<Schedule> schedules;
 

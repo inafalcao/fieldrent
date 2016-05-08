@@ -1,0 +1,22 @@
+[source,http]
+----
+PUT /field/11 HTTP/1.1
+Content-Type: application/json
+Host: localhost
+Content-Length: 344
+
+{
+  "name" : "New name",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "name" : "ArcloSociety",
+    "cnpj" : "2983492472",
+    "address" : "Rua Vicente Castro Filho, 1750",
+    "phone" : "(85) 42938274",
+    "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+    "id" : 7
+  },
+  "schedules" : [ ],
+  "id" : 11
+}
+----

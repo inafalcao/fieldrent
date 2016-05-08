@@ -1,0 +1,28 @@
+|===
+|Path|Type|Description|Constraints
+
+
+|name
+|String
+|
+|Must not be null. Size must be between 1 and 2147483647 inclusive
+
+
+|photo
+|String
+|Base64 encoded photo
+|
+
+
+|company
+|Object
+|
+|Must not be null
+
+
+|schedules
+|Array
+|
+|
+
+|===

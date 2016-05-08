@@ -1,0 +1,17 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/field/11' -i -X PUT -H 'Content-Type: application/json' -d '{
+  "name" : "New name",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "name" : "ArcloSociety",
+    "cnpj" : "2983492472",
+    "address" : "Rua Vicente Castro Filho, 1750",
+    "phone" : "(85) 42938274",
+    "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+    "id" : 7
+  },
+  "schedules" : [ ],
+  "id" : 11
+}'
+----

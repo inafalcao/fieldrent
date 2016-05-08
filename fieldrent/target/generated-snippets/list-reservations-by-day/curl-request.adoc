@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/reservations/16-04-2016' -i -H 'Accept: application/json'
+----

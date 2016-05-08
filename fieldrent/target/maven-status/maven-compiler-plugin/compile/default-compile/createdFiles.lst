@@ -1,8 +1,10 @@
 br/com/fieldrent/dto/ReservationDto.class
 br/com/fieldrent/controller/AplicationController.class
+br/com/fieldrent/dto/ScheduleDto.class
 br/com/fieldrent/repository/CompanyRepository.class
 br/com/fieldrent/model/MonthlySubscriberRequest.class
 br/com/fieldrent/controller/FieldController.class
+br/com/fieldrent/dto/FieldResume.class
 br/com/fieldrent/serialization/DateDeserializer.class
 br/com/fieldrent/model/ScheduleStatus.class
 br/com/fieldrent/util/StringUtil.class

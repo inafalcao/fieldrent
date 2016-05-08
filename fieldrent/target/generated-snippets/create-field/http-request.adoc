@@ -1,0 +1,29 @@
+[source,http]
+----
+POST /field HTTP/1.1
+Content-Type: application/json
+Host: localhost
+Content-Length: 505
+
+{
+  "name" : "Campo 66",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "name" : "ArcloSociety",
+    "cnpj" : "2983492472",
+    "address" : "Rua Vicente Castro Filho, 1750",
+    "phone" : "(85) 42938274",
+    "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+    "id" : 13
+  },
+  "schedules" : [ {
+    "startTime" : "12:00",
+    "endTime" : "13:00",
+    "status" : "AVAILABLE"
+  }, {
+    "startTime" : "14:00",
+    "endTime" : "15:00",
+    "status" : "UNAVAILABLE"
+  } ]
+}
+----

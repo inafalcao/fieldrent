@@ -1,0 +1,31 @@
+[source,http]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 547
+
+{
+  "id" : 32,
+  "name" : "Campo 1",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "id" : 28,
+    "name" : "ArcloSociety",
+    "cnpj" : "2983492472",
+    "address" : "Rua Vicente Castro Filho, 1750",
+    "phone" : "(85) 42938274",
+    "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf"
+  },
+  "schedules" : [ {
+    "id" : 30,
+    "startTime" : "12:00",
+    "endTime" : "13:00",
+    "status" : "AVAILABLE"
+  }, {
+    "id" : 31,
+    "startTime" : "14:00",
+    "endTime" : "15:00",
+    "status" : "UNAVAILABLE"
+  } ]
+}
+----

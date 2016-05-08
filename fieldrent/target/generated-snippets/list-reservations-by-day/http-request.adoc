@@ -1,0 +1,7 @@
+[source,http]
+----
+GET /reservations/16-04-2016 HTTP/1.1
+Accept: application/json
+Host: localhost
+
+----

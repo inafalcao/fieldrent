@@ -1,0 +1,22 @@
+[source,http]
+----
+POST /reservation HTTP/1.1
+Content-Type: application/json
+Host: localhost
+Content-Length: 281
+
+{
+  "client" : {
+    "name" : "Client1",
+    "email" : "client1@email.com",
+    "phone" : "99999999",
+    "monthlySubscriber" : false,
+    "id" : 7
+  },
+  "field" : "Campo 1",
+  "date" : "18-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}
+----

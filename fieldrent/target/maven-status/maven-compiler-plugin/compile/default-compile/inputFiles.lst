@@ -18,12 +18,14 @@
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/serialization/DateSerializer.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/repository/CompanyRepository.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/repository/ReservationRepository.java
+/home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/dto/FieldResume.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/repository/FieldRepository.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/FieldrentApplication.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/repository/ClientRepository.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/controller/AplicationController.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/serialization/ScheduleSerializer.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/serialization/DateDeserializer.java
+/home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/dto/ScheduleDto.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/model/Schedule.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/model/Client.java
 /home/inafalcao/Repository/fieldrent/fieldrent/src/main/java/br/com/fieldrent/controller/ReservationController.java

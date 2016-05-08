@@ -99,12 +99,10 @@ public class TestMock {
 
         String field = new Gson().toJson(f1);
         String schedules = "[ {\n" +
-                "    \"id\" : 75,\n" +
                 "    \"startTime\" : \"12:00\",\n" +
                 "    \"endTime\" : \"13:00\",\n" +
                 "    \"status\" : \"AVAILABLE\"\n" +
                 "  }, {\n" +
-                "    \"id\" : 76,\n" +
                 "    \"startTime\" : \"14:00\",\n" +
                 "    \"endTime\" : \"15:00\",\n" +
                 "    \"status\" : \"UNAVAILABLE\"\n" +
@@ -124,25 +122,21 @@ public class TestMock {
 
         String field = new Gson().toJson(toUpdateField);
         String schedules = "[ {\n" +
-                "    \"id\" : 77,\n" +
+                //"    \"id\" : 77,\n" +
                 "    \"startTime\" : \"12:00\",\n" +
                 "    \"endTime\" : \"13:00\",\n" +
                 "    \"status\" : \"AVAILABLE\"\n" +
                 "  }, {\n" +
-                "    \"id\" : 79,\n" +
+                //"    \"id\" : 79,\n" +
                 "    \"startTime\" : \"14:00\",\n" +
                 "    \"endTime\" : \"15:00\",\n" +
                 "    \"status\" : \"UNAVAILABLE\"\n" +
                 "  } ]";
         String withSchedule = field.replace("[]", schedules);
-
-        return withSchedule;
+        return field;
     }
 
     public void createReservations() {
-        /*createFields();
-        createClients();*/
-
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
         Field field = fieldRepository.findAll().get(0);
         Client client = clientRepository.findAll().get(0);
@@ -158,16 +152,10 @@ public class TestMock {
     }
 
     public String createReservation() {
-
-        //DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
-        //Field field = fieldRepository.findAll().get(0);
         Client client = clientRepository.findAll().get(0);
         client.setPassword(null);
         client.setPhotoLob(null);
         client.setPhoto(null);
-
-        //DateTime dt1 = formatter.parseDateTime("18-04-2016");
-        //Reservation r1 = new Reservation(client, null, null, null, null, ReservationStatus.OPEN);
 
         ReservationDto res = new ReservationDto(client, "Campo 1", "18-04-2016", "12:00", "13:00",  ReservationStatus.OPEN);
         String reservationString = new Gson().toJson(res);
