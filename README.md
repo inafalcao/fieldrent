@@ -1,5 +1,7 @@
 # fieldrent
 
+For more info, visit our [wiki](https://github.com/inafalcao/fieldrent/wiki)
+
 ## Requirements
 - Java 8
 - Tomcat 8
