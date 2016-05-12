@@ -20,3 +20,7 @@ To run
 
 Go to your browser and type
 localhost:8080
+
+## Run for production
+
+Follow these [steps](https://github.com/inafalcao/fieldrent/wiki/Production)
