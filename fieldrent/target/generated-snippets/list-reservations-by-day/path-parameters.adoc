@@ -1,8 +1,0 @@
-./reservations/{day}
-|===
-|Parameter|Description
-
-|day
-|The day and date with the format dd-MM-yyyy
-
-|===

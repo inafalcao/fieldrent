@@ -4,12 +4,9 @@ package br.com.fieldrent.documentation;
 import br.com.fieldrent.FieldrentApplication;
 import br.com.fieldrent.dto.ReservationDto;
 import br.com.fieldrent.mock.TestMock;
-import br.com.fieldrent.model.Company;
 import br.com.fieldrent.model.Reservation;
-import br.com.fieldrent.repository.CompanyRepository;
 import br.com.fieldrent.repository.ReservationRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,7 +18,6 @@ import org.springframework.restdocs.RestDocumentation;
 import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.restdocs.payload.FieldDescriptor;
-import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -91,8 +87,8 @@ public class ReservationDocumentation {
                 .andDo(this.document.snippets(
                                 responseFields(
                                         fieldWithPath("[].id").description("Database id."),
-                                        fieldWithPath("[].field").description(""),
-                                        fieldWithPath("[].client").description(""),
+                                        fieldWithPath("[].field").description("Just the field name."),
+                                        fieldWithPath("[].client").description("Just the client e-mail"),
                                         fieldWithPath("[].date").description(""),
                                         fieldWithPath("[].startTime").description(""),
                                         fieldWithPath("[].endTime").description(""),
@@ -107,38 +103,37 @@ public class ReservationDocumentation {
                 );
     }
 
-    /*@Test
-    public void getCompany() throws Exception {
+    @Test
+    public void getReservation() throws Exception {
 
-        Long companyId = reservationRepository.findAll().get(0).getId();
-        this.mockMvc.perform(get("/company/{id}", companyId).accept(MediaType.APPLICATION_JSON))
+        Long reservationId = reservationRepository.findAll().get(0).getId();
+        this.mockMvc.perform(get("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
                                 fieldWithPath("id").description("Database id."),
-                                fieldWithPath("name").description(""),
-                                fieldWithPath("cnpj").description(""),
-                                fieldWithPath("address").description(""),
-                                fieldWithPath("phone").description(""),
-                                fieldWithPath("photo")
-                                        .type(JsonFieldType.STRING)
-                                        .description("Base64 encoded photo")
+                                fieldWithPath("field").description("Just the field name."),
+                                fieldWithPath("client").description("Just the client e-mail"),
+                                fieldWithPath("date").description(""),
+                                fieldWithPath("startTime").description(""),
+                                fieldWithPath("endTime").description(""),
+                                fieldWithPath("reservationStatus").description("")
                         )
                         )
                 )
                 .andDo(this.document.snippets(
-                    pathParameters(
-                            parameterWithName("id").description("The database entity id"))
-                    )
+                        pathParameters(
+                                parameterWithName("id").description("The database entity id"))
+                        )
                 );
-    }*/
+    }
 
     @Test
     public void createReservation() throws Exception {
         //Reservation mock = testMock.createReservation();
 
         ConstrainedFields fields = new ConstrainedFields(ReservationDto.class);
-
+        String tmock = testMock.createReservation();
         this.mockMvc.perform(post("/reservation")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(testMock.createReservation()))
@@ -157,29 +152,24 @@ public class ReservationDocumentation {
 
     }
 
-    /*@Test
-    public void updateCompany() throws Exception {
-        Company toUpdateCompany = reservationRepository.findAll().get(0);
-        toUpdateCompany.setName("New name");
-        toUpdateCompany.generateBase64PhotoFromPhotoLob();
-        toUpdateCompany.setPhotoLob(null);
+    @Test
+    public void updateReservation() throws Exception {
+        Reservation toUpdateReservation = reservationRepository.findAll().get(0);
+        ConstrainedFields fields = new ConstrainedFields(ReservationDto.class);
 
-        ConstrainedFields fields = new ConstrainedFields(Company.class);
-
-        this.mockMvc.perform(put("/company/{id}", toUpdateCompany.getId())
+        this.mockMvc.perform(put("/reservation/{id}", toUpdateReservation.getId())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(new Gson().toJson(toUpdateCompany)))
+                .content(testMock.updateReservation(toUpdateReservation)))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         requestFields(
                                 fields.withPath("id").description(""),
-                                fields.withPath("name").description(""),
-                                fields.withPath("cnpj").description(""),
-                                fields.withPath("address").description(""),
-                                fields.withPath("phone").description(""),
-                                fields.withPath("photo")
-                                        .type(JsonFieldType.STRING)
-                                        .description("Base64 encoded photo")
+                                fields.withPath("field").description("Just the field name."),
+                                fields.withPath("client").description("Just the client e-mail"),
+                                fields.withPath("date").description("Date with format dd-MM-yyyy"),
+                                fields.withPath("startTime").description("Time with format hh:mm"),
+                                fields.withPath("endTime").description("Time with format hh:mm"),
+                                fields.withPath("reservationStatus").description("Status can be either: OPEN, CONFIRMED or CANCELED.")
                         )
                         )
                 )
@@ -188,19 +178,19 @@ public class ReservationDocumentation {
                                 parameterWithName("id").description("The database entity id"))
                         )
                 );
-    }*/
+    }
 
-    /*@Test
-    public void deleteCompany() throws Exception {
-        Long companyId = reservationRepository.findAll().get(0).getId();
-        this.mockMvc.perform(delete("/company/{id}", companyId).accept(MediaType.APPLICATION_JSON))
+    @Test
+    public void deleteReservation() throws Exception {
+        Long reservationId = reservationRepository.findAll().get(0).getId();
+        this.mockMvc.perform(delete("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
                 );
-    }*/
+    }
 
     private static class ConstrainedFields {
 

@@ -1,5 +1,7 @@
 package br.com.fieldrent.mock;
 
+import br.com.fieldrent.dto.ClientCompanyDto;
+import br.com.fieldrent.dto.PlayerDto;
 import br.com.fieldrent.dto.ReservationDto;
 import br.com.fieldrent.model.*;
 import br.com.fieldrent.repository.*;
@@ -34,6 +36,12 @@ public class TestMock {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private ClientCompanyRepository clientCompanyRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
     public void createClients() {
         Client c1 = new Client("Client1", "passwd1", "client1@email.com", "99999999", false,
@@ -153,15 +161,78 @@ public class TestMock {
 
     public String createReservation() {
         Client client = clientRepository.findAll().get(0);
-        client.setPassword(null);
-        client.setPhotoLob(null);
-        client.setPhoto(null);
 
-        ReservationDto res = new ReservationDto(client, "Campo 1", "18-04-2016", "12:00", "13:00",  ReservationStatus.OPEN);
+        ReservationDto res = new ReservationDto(client.getEmail(), "Campo 1", "18-04-2016", "12:00", "13:00",  ReservationStatus.OPEN);
         String reservationString = new Gson().toJson(res);
-        reservationString = reservationString.replace("testMock.createReservation()", "");
 
         return reservationString;
+    }
+
+    public String updateReservation(Reservation toUpdateReservation) {
+
+        ReservationDto res = new ReservationDto(toUpdateReservation.getClient().getEmail(),
+                                                toUpdateReservation.getField().getName(),
+                                                "18-04-2016",
+                                                "12:00",
+                                                "13:00",
+                                                ReservationStatus.CANCELED);
+        res.setId(toUpdateReservation.getId());
+        String reservationString = new Gson().toJson(res);
+
+        return reservationString;
+    }
+
+    public void createClientsCompany() {
+        Client client = clientRepository.findAll().get(0);
+        Company company = companyRepository.findAll().get(0);
+
+        ClientCompany clientCompany = new ClientCompany(client, company, true);
+        clientCompanyRepository.save(clientCompany);
+    }
+
+    public String createClientCompany() {
+        Client client = clientRepository.findAll().get(0);
+        Company company = companyRepository.findAll().get(0);
+
+        ClientCompanyDto res = new ClientCompanyDto(client.getEmail(), company.getCnpj(), true);
+        String clientCompanyString = new Gson().toJson(res);
+
+        return clientCompanyString;
+    }
+
+    public String updateClientCompany(ClientCompany toUpdateClientCompany) {
+
+        ClientCompanyDto ccd = new ClientCompanyDto(toUpdateClientCompany.getClient().getEmail(),
+                                                    toUpdateClientCompany.getCompany().getCnpj(),
+                                                    !toUpdateClientCompany.getIsAdmin());
+        ccd.setId(toUpdateClientCompany.getId());
+        String clientCompanyString = new Gson().toJson(ccd);
+        return clientCompanyString;
+    }
+
+    public void createPlayers() {
+        Client client = clientRepository.findAll().get(0);
+
+        Player player = new Player("Player 1", 5, client);
+        playerRepository.save(player);
+    }
+
+    public String createPlayer() {
+        Client client = clientRepository.findAll().get(0);
+
+        PlayerDto res = new PlayerDto(client.getEmail(), "Player J", 4);
+        String playerString = new Gson().toJson(res);
+
+        return playerString;
+    }
+
+    public String updatePlayer(Player toUpdatePlayer) {
+
+        PlayerDto pdto = new PlayerDto(toUpdatePlayer.getClient().getEmail(),
+                                      "New Player", 3);
+        pdto.setId(toUpdatePlayer.getId());
+        String playerString = new Gson().toJson(pdto);
+        return playerString;
     }
 
 }

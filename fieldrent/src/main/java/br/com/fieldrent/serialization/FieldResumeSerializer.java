@@ -15,9 +15,8 @@ public class FieldResumeSerializer extends JsonSerializer<Field> {
 
     @Override
     public void serialize(Field field, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        String fieldResume = "{\"name\": \"$fieldName\"}";
-        String f = fieldResume.replace("$fieldResume", field.getName());
-        jsonGenerator.writeString(f);
+        String fieldResume = field.getName();
+        jsonGenerator.writeString(fieldResume);
     }
 
 }

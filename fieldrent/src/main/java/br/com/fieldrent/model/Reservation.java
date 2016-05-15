@@ -22,6 +22,8 @@ public class Reservation extends br.com.fieldrent.model.Entity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonSerialize(using = ClientResumeSerializer.class)
+    @JsonDeserialize(using = ClientResumeDeserializer.class)
     private Client client;
 
     @NotNull

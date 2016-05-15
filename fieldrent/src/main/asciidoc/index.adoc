@@ -106,7 +106,7 @@ include::{snippets}/list-clients/http-response.adoc[]
 
 A `GET` request will show one client fetched by its Id.
 
-Note that password field is not sent back on this request.
+Note that password company is not sent back on this request.
 
 ==== Path parameters
 
@@ -131,7 +131,7 @@ include::{snippets}/get-client/http-response.adoc[]
 
 A `GET` request will show one client fetched by its unique e-mail.
 
-Note that password field is not sent back on this request.
+Note that password company is not sent back on this request.
 
 ==== Path parameters
 
@@ -349,10 +349,10 @@ include::{snippets}/delete-company/http-response.adoc[]
 == Field
 
 
-[[resources-fiels-list]]
-=== Listing fields
+[[resources-fields-list]]
+=== Listing Fields
 
-A `GET` request will list all of the service's fields.
+A `GET` request will list all of the service's Fields.
 
 ==== Response structure
 
@@ -369,13 +369,13 @@ include::{snippets}/list-fields/http-response.adoc[]
 
 
 [[resources-field-get]]
-=== Show field by id
+=== Show Field by id
 
-A `GET` request will show one field fetched by its Id.
+A `GET` request will show one Field fetched by its Id.
 
 ==== Path parameters
 
-include::{snippets}/get-company/path-parameters.adoc[]
+include::{snippets}/get-field/path-parameters.adoc[]
 
 ==== Response structure
 
@@ -392,7 +392,7 @@ include::{snippets}/get-field/http-response.adoc[]
 
 
 [[resources-field-create]]
-=== Creating field
+=== Creating Field
 
 A `POST` is used to create a Field resource.
 
@@ -410,8 +410,8 @@ include::{snippets}/create-field/http-response.adoc[]
 
 
 
-[[resources-field-update]]
-=== Updating field by id
+[[resources-company-update]]
+=== Updating Field by id
 
 A `PUT` is used to update a Field resource.
 
@@ -434,7 +434,7 @@ include::{snippets}/update-field/http-response.adoc[]
 
 
 [[resources-field-delete]]
-=== Deleting field by id
+=== Deleting Field by id
 
 A `DELETE` is used to remove a Field resource.
 
@@ -477,6 +477,29 @@ include::{snippets}/list-reservations-by-day/http-response.adoc[]
 
 
 
+[[resources-reservation-get]]
+=== Show Reservation by id
+
+A `GET` request will show one reservation fetched by its Id.
+
+==== Path parameters
+
+include::{snippets}/get-reservation/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-reservation/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-reservation/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-reservation/http-response.adoc[]
+
+
+
 [[resources-reservation-create]]
 === Creating reservation
 
@@ -493,3 +516,263 @@ include::{snippets}/create-reservation/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/create-reservation/http-response.adoc[]
+
+
+
+[[resources-reservation-update]]
+=== Updating Reservation by id
+
+A `PUT` is used to update a Reservation resource.
+
+==== Path parameters
+
+include::{snippets}/update-reservation/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-reservation/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-reservation/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-reservation/http-response.adoc[]
+
+
+
+[[resources-reservation-delete]]
+=== Deleting Reservation by id
+
+A `DELETE` is used to remove a Reservation resource.
+
+==== Path parameters
+
+include::{snippets}/delete-reservation/path-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/delete-reservation/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-reservation/http-response.adoc[]
+
+
+
+
+[[resources-client-company]]
+== Client Company (admin)
+
+
+[[resources-client-company-list]]
+=== Listing ClientCompany
+
+A `GET` request will list all of the service's clients company.
+
+==== Response structure
+
+include::{snippets}/list-client-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-client-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-client-company/http-response.adoc[]
+
+
+
+[[resources-client-company-get]]
+=== Show ClientCompany by id
+
+A `GET` request will show one client company fetched by its Id.
+
+==== Path parameters
+
+include::{snippets}/get-client-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-client-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-client-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-client-company/http-response.adoc[]
+
+
+
+[[resources-client-company-create]]
+=== Creating client company
+
+A `POST` is used to create a Reservation resource.
+
+==== Request structure
+
+include::{snippets}/create-client-company/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-client-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-client-company/http-response.adoc[]
+
+
+
+[[resources-client-company-update]]
+=== Updating Reservation by id
+
+A `PUT` is used to update a Reservation resource.
+
+==== Path parameters
+
+include::{snippets}/update-client-company/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-client-company/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-client-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-client-company/http-response.adoc[]
+
+
+
+[[resources-client-company-delete]]
+=== Deleting ClientCompany by id
+
+A `DELETE` is used to remove a ClientCompany resource.
+
+==== Path parameters
+
+include::{snippets}/delete-client-company/path-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/delete-client-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-client-company/http-response.adoc[]
+
+
+
+
+
+
+[[resources-player]]
+== Player
+
+
+[[resources-players-list]]
+=== Listing players
+
+A `GET` request will list all of the service's players.
+
+==== Response structure
+
+include::{snippets}/list-players/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-players/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-players/http-response.adoc[]
+
+
+
+[[resources-player-get]]
+=== Show Player by id
+
+A `GET` request will show one player fetched by its Id.
+
+==== Path parameters
+
+include::{snippets}/get-player/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-player/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-player/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-player/http-response.adoc[]
+
+
+
+[[resources-player-create]]
+=== Creating Player
+
+A `POST` is used to create a Player resource.
+
+==== Request structure
+
+include::{snippets}/create-player/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/create-player/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/create-player/http-response.adoc[]
+
+
+
+[[resources-player-update]]
+=== Updating player by id
+
+A `PUT` is used to update a Player resource.
+
+==== Path parameters
+
+include::{snippets}/update-player/path-parameters.adoc[]
+
+==== Request structure
+
+include::{snippets}/update-player/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/update-player/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/update-player/http-response.adoc[]
+
+
+
+[[resources-player-delete]]
+=== Deleting Player by id
+
+A `DELETE` is used to remove a Player resource.
+
+==== Path parameters
+
+include::{snippets}/delete-player/path-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/delete-player/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/delete-player/http-response.adoc[]

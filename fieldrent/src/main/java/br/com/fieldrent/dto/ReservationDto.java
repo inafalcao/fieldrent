@@ -11,6 +11,7 @@ import org.joda.time.LocalTime;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Created by inafalcao on 2/29/16.
@@ -20,20 +21,25 @@ import javax.validation.constraints.NotNull;
 public class ReservationDto extends br.com.fieldrent.model.Entity {
 
     @NotNull
-    private Client client;
+    @Size(min = 1)
+    private String client;
 
     @NotNull
+    @Size(min = 1)
     private String field;
 
     @NotNull
+    @Size(min = 1)
     @JsonSerialize(using = DateSerializer.class)
     @JsonDeserialize(using = DateDeserializer.class)
     private String date;
 
     @NotNull
+    @Size(min = 1)
     private String startTime;
 
     @NotNull
+    @Size(min = 1)
     private String endTime;
 
     @Column(name = "reservation_status")
@@ -44,7 +50,7 @@ public class ReservationDto extends br.com.fieldrent.model.Entity {
 
     }
 
-    public ReservationDto(Client client, String field, String date, String startTime, String endTime, ReservationStatus reservationStatus) {
+    public ReservationDto(String client, String field, String date, String startTime, String endTime, ReservationStatus reservationStatus) {
         this.client = client;
         this.field = field;
         this.date = date;
@@ -53,11 +59,11 @@ public class ReservationDto extends br.com.fieldrent.model.Entity {
         this.reservationStatus = reservationStatus;
     }
 
-    public Client getClient() {
+    public String getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(String client) {
         this.client = client;
     }
 

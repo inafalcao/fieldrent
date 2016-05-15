@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Created by inafalcao on 4/30/16.
@@ -19,9 +20,11 @@ import javax.validation.constraints.NotNull;
 public class ScheduleDto {
 
     @NotNull
+    @Size(min = 1)
     private String startTime;
 
     @NotNull
+    @Size(min = 1)
     private String endTime;
 
     @Column(name = "status")

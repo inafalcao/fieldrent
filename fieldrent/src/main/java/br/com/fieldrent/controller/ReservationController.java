@@ -1,8 +1,7 @@
 package br.com.fieldrent.controller;
 
-import br.com.fieldrent.model.Company;
 import br.com.fieldrent.model.Reservation;
-import br.com.fieldrent.repository.CompanyRepository;
+import br.com.fieldrent.repository.ClientRepository;
 import br.com.fieldrent.repository.ReservationRepository;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -23,6 +22,9 @@ public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
 
+    @Autowired
+    private ClientRepository clientRepository;
+
     @RequestMapping(value = "/reservations/{day}", method = RequestMethod.GET)
     public List<Reservation> listByDay(@PathVariable("day") String day) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
@@ -33,30 +35,29 @@ public class ReservationController {
 
     @RequestMapping(value = "/reservation", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody  Reservation reservation) {
+    public void create(@RequestBody Reservation reservation) {
         reservationRepository.save(reservation);
     }
 
-    /*@RequestMapping(value="/company/{id}", method = RequestMethod.GET)
-    public Company getOne(@PathVariable("id") Long id) {
+    @RequestMapping(value="/reservation/{id}", method = RequestMethod.GET)
+    public Reservation getOne(@PathVariable("id") Long id) {
         return reservationRepository.findOne(id);
     }
 
 
-
-    @RequestMapping(value = "/company/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/reservation/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable("id") Long id, @RequestBody Company company) {
-        Company existingCompany = reservationRepository.findOne(id);
-        company.setId(existingCompany.getId());
-        existingCompany = company;
-        reservationRepository.save(existingCompany);
+    public void update(@PathVariable("id") Long id, @RequestBody Reservation reservation) {
+        Reservation existingReservation = reservationRepository.findOne(id);
+        reservation.setId(existingReservation.getId());
+        existingReservation = reservation;
+        reservationRepository.save(existingReservation);
     }
 
-    @RequestMapping(value = "/company/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/reservation/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {
         reservationRepository.delete(id);
-    }*/
+    }
 
 }
