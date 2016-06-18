@@ -233,6 +233,27 @@ include::{snippets}/delete-client-by-email/http-response.adoc[]
 
 
 
+[[resources-client-authenticate]]
+=== Authenticating client
+
+A `POST` is used to authenticate Clients.
+
+Notice that if the client is a ClientCompany, the Client will be null, and you can check if it is an admin with the flag
+ 'admin'.
+
+If the client is not a ClientCompany, then clientCompany will be null, and you're guaranteed that your client is not an
+admin.
+
+If both client and clientCompany are null, then the client is not authenticated, and an UNAUTHORIZED will be returned.
+
+==== Example request
+
+include::{snippets}/authenticate-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/authenticate-client/http-response.adoc[]
+
 
 
 [[resources-company]]
@@ -461,7 +482,11 @@ include::{snippets}/delete-field/http-response.adoc[]
 [[resources-reservations-list-by-day]]
 === Listing reservations by day
 
-A `GET` request will list all of the service's reservations.
+A `GET` request will list all of the service's reservations fetched by date.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-day/path-parameters.adoc[]
 
 ==== Response structure
 
@@ -475,6 +500,119 @@ include::{snippets}/list-reservations-by-day/curl-request.adoc[]
 
 include::{snippets}/list-reservations-by-day/http-response.adoc[]
 
+
+
+[[resources-reservations-list-by-day-and-company]]
+=== Listing reservations by day and Company
+
+A `GET` request will list all of the service's reservations fetched by date and Company.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-day-and-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-day-and-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-day-and-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-day-and-company/http-response.adoc[]
+
+
+
+[[resources-reservations-list-by-status]]
+=== Listing reservations by status
+
+A `GET` request will list all of the service's reservations fetched by status.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-status/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-status/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-status/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-status/http-response.adoc[]
+
+
+[[resources-reservations-list-by-company]]
+=== Listing reservations by Company
+
+A `GET` request will list all of the service's reservations fetched by Company.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-company/http-response.adoc[]
+
+
+
+[[resources-reservations-list-by-client]]
+=== Listing reservations by Client
+
+A `GET` request will list all of the service's reservations fetched by Client.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-client/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-client/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-client/http-response.adoc[]
+
+
+
+[[resources-reservations-list-by-status-and-company]]
+=== Listing reservations by Status and Company
+
+A `GET` request will list all of the service's reservations fetched by Company and Status.
+
+==== Path parameters
+
+include::{snippets}/list-reservations-by-status-and-company/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/list-reservations-by-status-and-company/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/list-reservations-by-status-and-company/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/list-reservations-by-status-and-company/http-response.adoc[]
 
 
 [[resources-reservation-get]]
@@ -605,6 +743,52 @@ include::{snippets}/get-client-company/curl-request.adoc[]
 ==== Example response
 
 include::{snippets}/get-client-company/http-response.adoc[]
+
+
+
+[[resources-client-company-get-by-email]]
+=== Show ClientCompany by e-mail
+
+A `GET` request will show one client company fetched by its e-mail.
+
+==== Path parameters
+
+include::{snippets}/get-client-company-by-email/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-client-company-by-email/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-client-company-by-email/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-client-company-by-email/http-response.adoc[]
+
+
+
+[[resources-client-company-get-company-by-client]]
+=== Show Company by Client e-mail
+
+A `GET` request will show one company fetched by its Client (e-mail).
+
+==== Path parameters
+
+include::{snippets}/get-company-by-client/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/get-company-by-client/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/get-company-by-client/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/get-company-by-client/http-response.adoc[]
 
 
 

@@ -18,6 +18,7 @@ import org.springframework.restdocs.RestDocumentation;
 import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -113,6 +114,54 @@ public class ClientCompanyDocumentation {
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
+                        )
+                );
+    }
+
+    @Test
+    public void getClientCompanyByEmail() throws Exception {
+
+        String clientEmail = clientCompanyRepository.findAll().get(0).getClient().getEmail();
+        this.mockMvc.perform(get("/client-company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("id").description("Database id."),
+                                fieldWithPath("client").description("Just the client e-mail"),
+                                fieldWithPath("company").description("Just the company CNPJ"),
+                                fieldWithPath("isAdmin").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("email").description(""))
+                        )
+                );
+    }
+
+    @Test
+    public void getCompanyByClient() throws Exception {
+
+        String clientEmail = clientCompanyRepository.findAll().get(0).getClient().getEmail();
+        this.mockMvc.perform(get("/client-company/company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("id").description("Database id."),
+                                fieldWithPath("name").description(""),
+                                fieldWithPath("cnpj").description(""),
+                                fieldWithPath("address").description(""),
+                                fieldWithPath("phone").description(""),
+                                fieldWithPath("photo")
+                                        .type(JsonFieldType.STRING)
+                                        .description("Base64 encoded photo")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("email").description(""))
                         )
                 );
     }

@@ -43,6 +43,10 @@ public class TestMock {
     @Autowired
     private PlayerRepository playerRepository;
 
+    public TestMock() {
+
+    }
+
     public void createClients() {
         Client c1 = new Client("Client1", "passwd1", "client1@email.com", "99999999", false,
                 "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");

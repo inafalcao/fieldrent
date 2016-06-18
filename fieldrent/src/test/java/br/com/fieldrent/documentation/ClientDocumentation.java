@@ -2,6 +2,7 @@ package br.com.fieldrent.documentation;
 
 
 import br.com.fieldrent.FieldrentApplication;
+import br.com.fieldrent.dto.ClientAuthRequestDto;
 import br.com.fieldrent.mock.TestMock;
 import br.com.fieldrent.model.Client;
 import br.com.fieldrent.model.Company;
@@ -185,6 +186,39 @@ public class ClientDocumentation {
                         )
                         )
                 );
+    }
+
+    @Test
+    public void authenticateClient() throws Exception {
+        Client client = clientRepository.findAll().get(0);
+        ClientAuthRequestDto clientAuthDto = new ClientAuthRequestDto(client.getEmail(), client.getPassword());
+
+        ConstrainedFields fields = new ConstrainedFields(ClientAuthRequestDto.class);
+
+        this.mockMvc.perform(post("/client/auth")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(clientAuthDto)))
+                .andExpect(status().isAccepted())
+                .andDo(this.document.snippets(
+                        requestFields(
+                                fields.withPath("email").description(""),
+                                fields.withPath("password").description(""))
+                        )
+
+                )
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("client").description("Return just a Client, if it is not a ClientCompany."),
+                                fieldWithPath("clientCompany").description("Return just a ClientCompany, if it is not a common client.")
+                        )
+                        )
+                );
+        /*clientAuthDto.setEmail("");
+        clientAuthDto.setPassword("");
+        this.mockMvc.perform(post("/client/auth")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(clientAuthDto)))
+                .andExpect(status().is4xxClientError());*/
     }
 
     @Test

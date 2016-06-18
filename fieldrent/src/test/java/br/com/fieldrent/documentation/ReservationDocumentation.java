@@ -4,6 +4,8 @@ package br.com.fieldrent.documentation;
 import br.com.fieldrent.FieldrentApplication;
 import br.com.fieldrent.dto.ReservationDto;
 import br.com.fieldrent.mock.TestMock;
+import br.com.fieldrent.model.Client;
+import br.com.fieldrent.model.Company;
 import br.com.fieldrent.model.Reservation;
 import br.com.fieldrent.repository.ReservationRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +27,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.List;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
@@ -99,6 +103,137 @@ public class ReservationDocumentation {
                 .andDo(this.document.snippets(
                                 pathParameters(
                                         parameterWithName("day").description("The day and date with the format dd-MM-yyyy"))
+                        )
+                );
+    }
+
+    @Test
+    public void listReservationsByDayAndCompany() throws Exception {
+
+        Company company = reservationRepository.findAll().get(0).getField().getCompany();
+
+        this.mockMvc.perform(get("/reservations/{day}/company/{cnpj}", "16-04-2016", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].field").description("Just the field name."),
+                                fieldWithPath("[].client").description("Just the client e-mail"),
+                                fieldWithPath("[].date").description(""),
+                                fieldWithPath("[].startTime").description(""),
+                                fieldWithPath("[].endTime").description(""),
+                                fieldWithPath("[].reservationStatus").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("day").description("The day and date with the format dd-MM-yyyy"),
+                                parameterWithName("cnpj").description("The Company CNPJ.")
+                        )
+                        )
+                );
+    }
+
+    @Test
+    public void listReservationsByStatus() throws Exception {
+
+        this.mockMvc.perform(get("/reservations/status/{status}", "OPEN").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].field").description("Just the field name."),
+                                fieldWithPath("[].client").description("Just the client e-mail"),
+                                fieldWithPath("[].date").description(""),
+                                fieldWithPath("[].startTime").description(""),
+                                fieldWithPath("[].endTime").description(""),
+                                fieldWithPath("[].reservationStatus").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("status").description("Status can be either: OPEN, CONFIRMED or CANCELED."))
+                        )
+                );
+    }
+
+    @Test
+    public void listReservationsByCompany() throws Exception {
+
+        Company company = reservationRepository.findAll().get(0).getField().getCompany();
+
+        this.mockMvc.perform(get("/reservations/company/{cnpj}", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].field").description("Just the field name."),
+                                fieldWithPath("[].client").description("Just the client e-mail"),
+                                fieldWithPath("[].date").description(""),
+                                fieldWithPath("[].startTime").description(""),
+                                fieldWithPath("[].endTime").description(""),
+                                fieldWithPath("[].reservationStatus").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("cnpj").description("The company CNPJ."))
+                        )
+                );
+    }
+
+    @Test
+    public void listReservationsByClient() throws Exception {
+        Client client = reservationRepository.findAll().get(0).getClient();
+
+        this.mockMvc.perform(get("/reservations/client/{email}", client.getEmail()).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].field").description("Just the field name."),
+                                fieldWithPath("[].client").description("Just the client e-mail"),
+                                fieldWithPath("[].date").description(""),
+                                fieldWithPath("[].startTime").description(""),
+                                fieldWithPath("[].endTime").description(""),
+                                fieldWithPath("[].reservationStatus").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("email").description("The Client e-mail."))
+                        )
+                );
+    }
+
+    @Test
+    public void listReservationsByStatusAndCompany() throws Exception {
+
+        Company company = reservationRepository.findAll().get(0).getField().getCompany();
+
+        this.mockMvc.perform(get("/reservations/status/{status}/company/{cnpj}", "OPEN", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("[].id").description("Database id."),
+                                fieldWithPath("[].field").description("Just the field name."),
+                                fieldWithPath("[].client").description("Just the client e-mail"),
+                                fieldWithPath("[].date").description(""),
+                                fieldWithPath("[].startTime").description(""),
+                                fieldWithPath("[].endTime").description(""),
+                                fieldWithPath("[].reservationStatus").description("")
+                        )
+                        )
+                )
+                .andDo(this.document.snippets(
+                        pathParameters(
+                                parameterWithName("status").description("Status can be either: OPEN, CONFIRMED or CANCELED."),
+                                parameterWithName("cnpj").description("The company CNPJ.")
+                        )
                         )
                 );
     }

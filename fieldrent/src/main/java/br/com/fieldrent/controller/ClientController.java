@@ -1,12 +1,16 @@
 package br.com.fieldrent.controller;
 
+import br.com.fieldrent.dto.ClientAuthRequestDto;
+import br.com.fieldrent.dto.ClientAuthResponseDto;
 import br.com.fieldrent.model.Client;
+import br.com.fieldrent.model.ClientCompany;
+import br.com.fieldrent.repository.ClientCompanyRepository;
 import br.com.fieldrent.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -18,6 +22,9 @@ public class ClientController {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private ClientCompanyRepository clientCompanyRepository;
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public List<Client> list() {
@@ -38,6 +45,24 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody  Client client) {
         clientRepository.save(client);
+    }
+
+    @RequestMapping(value = "/client/auth", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ClientAuthResponseDto auth(@RequestBody ClientAuthRequestDto clientToAuth) {
+        Client client = clientRepository.findByEmailAndPassword(clientToAuth.getEmail(), clientToAuth.getPassword());
+        ClientCompany clientCompany = clientCompanyRepository.findByClientEmail(clientToAuth.getEmail());
+
+        ClientAuthResponseDto response = new ClientAuthResponseDto();
+
+        if (clientCompany != null)
+            response.setClientCompany(clientCompany);
+        else if(client != null)
+            response.setClient(client);
+        else
+            throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED);
+
+        return response;
     }
 
     @RequestMapping(value = "/client/{id}", method = RequestMethod.PUT)

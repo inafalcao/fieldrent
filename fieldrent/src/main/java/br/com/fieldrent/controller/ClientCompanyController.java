@@ -1,7 +1,10 @@
 package br.com.fieldrent.controller;
 
+import br.com.fieldrent.model.Client;
 import br.com.fieldrent.model.ClientCompany;
+import br.com.fieldrent.model.Company;
 import br.com.fieldrent.repository.ClientCompanyRepository;
+import br.com.fieldrent.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,9 @@ public class ClientCompanyController {
 
     @Autowired
     private ClientCompanyRepository clientCompanyRepository;
+
+    @Autowired
+    CompanyRepository companyRepository;
 
     @RequestMapping(value = "/client-company", method = RequestMethod.GET)
     public List<ClientCompany> list() {
@@ -34,6 +40,15 @@ public class ClientCompanyController {
         return clientCompanyRepository.findOne(id);
     }
 
+    @RequestMapping(value="/client-company/email/{email:.+}", method = RequestMethod.GET)
+    public ClientCompany getByEmail(@PathVariable("email") String email) {
+        return clientCompanyRepository.findByClientEmail(email);
+    }
+
+    @RequestMapping(value="/client-company/company/email/{email:.+}", method = RequestMethod.GET)
+    public Company getCompanyByClientEmail(@PathVariable("email") String email) {
+       return companyRepository.findByClientEmail(email);
+    }
 
     @RequestMapping(value = "/client-company/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)

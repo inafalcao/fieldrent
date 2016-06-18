@@ -126,6 +126,10 @@ public class Client extends br.com.fieldrent.model.Entity {
         generateBase64PhotoFromPhotoLob();
     }
 
+    public Boolean getMonthlySubscriber() {
+        return monthlySubscriber;
+    }
+
     public Boolean isMonthlySubscriber() {
         return monthlySubscriber;
     }
