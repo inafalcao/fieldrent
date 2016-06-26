@@ -43,12 +43,16 @@ public class TestMock {
     @Autowired
     private PlayerRepository playerRepository;
 
+    public TestMock() {
+
+    }
+
     public void createClients() {
         Client c1 = new Client("Client1", "passwd1", "client1@email.com", "99999999", false,
-                "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");
+                "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf", true);
         c1.generatePhotoLobFromBase64Photo();
         Client c2 = new Client("Client2", "passwd2", "client2@email.com", "00000000", false,
-                "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");
+                "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf", false);
         c2.generatePhotoLobFromBase64Photo();
 
         clientRepository.save(c1);

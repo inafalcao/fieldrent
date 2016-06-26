@@ -51,17 +51,30 @@ public class Client extends br.com.fieldrent.model.Entity {
     @Column(name = "monthly_subscriber")
     private Boolean monthlySubscriber;
 
+    @Column(name = "facebook_user")
+    private Boolean isFacebookUser = false;
+
     public Client() {
         monthlySubscriber = false;
+        isFacebookUser = false;
     }
 
-    public Client(String name, String password, String email, String phone, Boolean monthlySubscriber, String photo) {
+    public Client(String name, String password, String email, String phone, Boolean monthlySubscriber, String photo, Boolean isFacebookUser) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.monthlySubscriber = monthlySubscriber;
         this.photo = photo;
+        this.isFacebookUser = isFacebookUser;
+    }
+
+    public Boolean getIsFacebookUser() {
+        return isFacebookUser;
+    }
+
+    public void setIsFacebookUser(Boolean facebookUser) {
+        isFacebookUser = facebookUser;
     }
 
     public String getName() {
@@ -124,6 +137,10 @@ public class Client extends br.com.fieldrent.model.Entity {
     public void setPhotoLob(Byte[] photoLob) {
         this.photoLob = photoLob;
         generateBase64PhotoFromPhotoLob();
+    }
+
+    public Boolean getMonthlySubscriber() {
+        return monthlySubscriber;
     }
 
     public Boolean isMonthlySubscriber() {

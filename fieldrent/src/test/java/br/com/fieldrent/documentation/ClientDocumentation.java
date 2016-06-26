@@ -2,6 +2,7 @@ package br.com.fieldrent.documentation;
 
 
 import br.com.fieldrent.FieldrentApplication;
+import br.com.fieldrent.dto.ClientAuthRequestDto;
 import br.com.fieldrent.mock.TestMock;
 import br.com.fieldrent.model.Client;
 import br.com.fieldrent.model.Company;
@@ -103,7 +104,8 @@ public class ClientDocumentation {
                                 fieldWithPath("[].photo")
                                         .type(JsonFieldType.STRING)
                                         .description("Base64 encoded photo"),
-                                fieldWithPath("[].monthlySubscriber").description("Mensalista")
+                                fieldWithPath("[].monthlySubscriber").description("Mensalista"),
+                                fieldWithPath("[].isFacebookUser").description("")
                         )
                         )
                 );
@@ -126,7 +128,9 @@ public class ClientDocumentation {
                                 fieldWithPath("photo")
                                         .type(JsonFieldType.STRING)
                                         .description("Base64 encoded photo"),
-                                fieldWithPath("monthlySubscriber").description("Mensalista"))
+                                fieldWithPath("monthlySubscriber").description("Mensalista"),
+                                fieldWithPath("isFacebookUser").description("")
+                                )
                         )
                 )
                 .andDo(this.document.snippets(
@@ -152,7 +156,8 @@ public class ClientDocumentation {
                                 fieldWithPath("photo")
                                         .type(JsonFieldType.STRING)
                                         .description("Base64 encoded photo"),
-                                fieldWithPath("monthlySubscriber").description("Mensalista"))
+                                fieldWithPath("monthlySubscriber").description("Mensalista"),
+                                fieldWithPath("isFacebookUser").description(""))
                         )
                 )
                 .andDo(this.document.snippets(
@@ -164,7 +169,7 @@ public class ClientDocumentation {
 
     @Test
     public void createClient() throws Exception {
-        Client mockClient = new Client("Client", "passwd", "client@email.com", "99999999", true, "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf");
+        Client mockClient = new Client("Client", "passwd", "client@email.com", "99999999", true, "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf", true);
 
         ConstrainedFields fields = new ConstrainedFields(Client.class);
 
@@ -181,10 +186,44 @@ public class ClientDocumentation {
                                 fields.withPath("photo")
                                         .type(JsonFieldType.STRING)
                                         .description("Base64 encoded photo"),
-                                fields.withPath("monthlySubscriber").description("Mensalista")
+                                fields.withPath("monthlySubscriber").description("Mensalista"),
+                                fields.withPath("isFacebookUser").description("")
                         )
                         )
                 );
+    }
+
+    @Test
+    public void authenticateClient() throws Exception {
+        Client client = clientRepository.findAll().get(0);
+        ClientAuthRequestDto clientAuthDto = new ClientAuthRequestDto(client.getEmail(), client.getPassword());
+
+        ConstrainedFields fields = new ConstrainedFields(ClientAuthRequestDto.class);
+
+        this.mockMvc.perform(post("/client/auth")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(clientAuthDto)))
+                .andExpect(status().isAccepted())
+                .andDo(this.document.snippets(
+                        requestFields(
+                                fields.withPath("email").description(""),
+                                fields.withPath("password").description(""))
+                        )
+
+                )
+                .andDo(this.document.snippets(
+                        responseFields(
+                                fieldWithPath("client").description("Return just a Client, if it is not a ClientCompany."),
+                                fieldWithPath("clientCompany").description("Return just a ClientCompany, if it is not a common client.")
+                        )
+                        )
+                );
+        /*clientAuthDto.setEmail("");
+        clientAuthDto.setPassword("");
+        this.mockMvc.perform(post("/client/auth")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(clientAuthDto)))
+                .andExpect(status().is4xxClientError());*/
     }
 
     @Test
@@ -213,7 +252,8 @@ public class ClientDocumentation {
                                 fields.withPath("photo")
                                         .type(JsonFieldType.STRING)
                                         .description("Base64 encoded photo"),
-                                fields.withPath("monthlySubscriber").description("Mensalista")
+                                fields.withPath("monthlySubscriber").description("Mensalista"),
+                                fields.withPath("isFacebookUser").description("")
                         )
                         )
                 )
