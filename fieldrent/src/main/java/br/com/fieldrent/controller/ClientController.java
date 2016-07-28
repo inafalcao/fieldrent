@@ -6,6 +6,7 @@ import br.com.fieldrent.model.Client;
 import br.com.fieldrent.model.ClientCompany;
 import br.com.fieldrent.repository.ClientCompanyRepository;
 import br.com.fieldrent.repository.ClientRepository;
+import br.com.fieldrent.security.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +45,7 @@ public class ClientController {
     @RequestMapping(value = "/client", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody  Client client) {
+        client.grantRole(UserRole.USER);
         clientRepository.save(client);
     }
 
@@ -65,6 +67,7 @@ public class ClientController {
         return response;
     }
 
+<<<<<<< HEAD
     @RequestMapping(value="/client/facebook/{email:.+}", method = RequestMethod.GET)
     public boolean isFacebookUser(@PathVariable("email") String email) {
         Client client = clientRepository.findByEmail(email);
@@ -74,6 +77,8 @@ public class ClientController {
         return false; // TODO: deveria dar um 404, eu acho
     }
 
+=======
+>>>>>>> token
     @RequestMapping(value = "/client/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id, @RequestBody Client client) {

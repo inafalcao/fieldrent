@@ -922,10 +922,14 @@ use of HTTP status codes.</p>
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 423
+=======
+Content-Length: 376
+>>>>>>> token
 
 [ {
-  "id" : 31,
+  "id" : 294942,
   "name" : "Client1",
   "email" : "client1@email.com",
   "phone" : "99999999",
@@ -933,7 +937,7 @@ Content-Length: 423
   "monthlySubscriber" : false,
   "isFacebookUser" : true
 }, {
-  "id" : 32,
+  "id" : 294943,
   "name" : "Client2",
   "email" : "client2@email.com",
   "phone" : "00000000",
@@ -1033,7 +1037,7 @@ Content-Length: 423
 <h4 id="_example_request_2"><a class="link" href="#_example_request_2">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/18' -i -H 'Accept: application/json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/294929' -i -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 </div>
@@ -1043,10 +1047,14 @@ Content-Length: 423
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 208
+=======
+Content-Length: 185
+>>>>>>> token
 
 {
-  "id" : 18,
+  "id" : 294929,
   "name" : "Client1",
   "email" : "client1@email.com",
   "phone" : "99999999",
@@ -1157,10 +1165,14 @@ Content-Length: 208
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Disposition: inline;filename=f.txt
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 208
+=======
+Content-Length: 185
+>>>>>>> token
 
 {
-  "id" : 14,
+  "id" : 294925,
   "name" : "Client1",
   "email" : "client1@email.com",
   "phone" : "99999999",
@@ -1365,15 +1377,19 @@ Content-Length: 208
 <h4 id="_example_request_5"><a class="link" href="#_example_request_5">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/1' -i -X PUT -H 'Content-Type: application/json' -d '{
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/294912' -i -X PUT -H 'Content-Type: application/json' -d '{
   "name" : "New name",
   "password" : "passwd1",
   "email" : "client1@email.com",
   "phone" : "99999999",
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
   "monthlySubscriber" : false,
+<<<<<<< HEAD
   "isFacebookUser" : true,
   "id" : 1
+=======
+  "id" : 294912
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -1418,7 +1434,7 @@ Content-Length: 208
 <h4 id="_example_request_6"><a class="link" href="#_example_request_6">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/5' -i -X DELETE -H 'Accept: application/json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client/294916' -i -X DELETE -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 </div>
@@ -1508,17 +1524,29 @@ admin.</p>
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 202 Accepted
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 267
 
 {
   "client" : {
     "id" : 35,
+=======
+Content-Length: 242
+
+{
+  "client" : {
+    "id" : 294946,
+>>>>>>> token
     "name" : "Client1",
     "email" : "client1@email.com",
     "phone" : "99999999",
     "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+<<<<<<< HEAD
     "monthlySubscriber" : false,
     "isFacebookUser" : true
+=======
+    "monthlySubscriber" : false
+>>>>>>> token
   },
   "clientCompany" : null
 }</code></pre>
@@ -1599,17 +1627,25 @@ Content-Length: 267
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 399
+Content-Length: 407
 
 [ {
+<<<<<<< HEAD
   "id" : 56,
+=======
+  "id" : 262199,
+>>>>>>> token
   "name" : "ArcloSociety",
   "cnpj" : "2983492472",
   "address" : "Rua Vicente Castro Filho, 1750",
   "phone" : "(85) 42938274",
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf"
 }, {
+<<<<<<< HEAD
   "id" : 57,
+=======
+  "id" : 262200,
+>>>>>>> token
   "name" : "Arena",
   "cnpj" : "3983492472",
   "address" : "Rua Vicente Castro Filho, 1750",
@@ -1700,7 +1736,11 @@ Content-Length: 399
 <h4 id="_example_request_10"><a class="link" href="#_example_request_10">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/54' -i -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/262197' -i -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -1710,10 +1750,14 @@ Content-Length: 399
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 200
+Content-Length: 204
 
 {
+<<<<<<< HEAD
   "id" : 54,
+=======
+  "id" : 262197,
+>>>>>>> token
   "name" : "ArcloSociety",
   "cnpj" : "2983492472",
   "address" : "Rua Vicente Castro Filho, 1750",
@@ -1891,13 +1935,21 @@ Content-Length: 200
 <h4 id="_example_request_12"><a class="link" href="#_example_request_12">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/50' -i -X PUT -H 'Content-Type: application/json' -d '{
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/262193' -i -X PUT -H 'Content-Type: application/json' -d '{
+>>>>>>> token
   "name" : "New name",
   "cnpj" : "2983492472",
   "address" : "Rua Vicente Castro Filho, 1750",
   "phone" : "(85) 42938274",
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+<<<<<<< HEAD
   "id" : 50
+=======
+  "id" : 262193
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -1942,7 +1994,11 @@ Content-Length: 200
 <h4 id="_example_request_13"><a class="link" href="#_example_request_13">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/52' -i -X DELETE -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/company/262195' -i -X DELETE -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -2023,6 +2079,7 @@ Content-Length: 200
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 899
 
 [ {
@@ -2031,6 +2088,16 @@ Content-Length: 899
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
   "company" : {
     "id" : 95,
+=======
+Content-Length: 922
+
+[ {
+  "id" : 262242,
+  "name" : "Campo 1",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "id" : 262238,
+>>>>>>> token
     "name" : "ArcloSociety",
     "cnpj" : "2983492472",
     "address" : "Rua Vicente Castro Filho, 1750",
@@ -2038,22 +2105,38 @@ Content-Length: 899
     "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf"
   },
   "schedules" : [ {
+<<<<<<< HEAD
     "id" : 97,
+=======
+    "id" : 262240,
+>>>>>>> token
     "startTime" : "12:00",
     "endTime" : "13:00",
     "status" : "AVAILABLE"
   }, {
+<<<<<<< HEAD
     "id" : 98,
+=======
+    "id" : 262241,
+>>>>>>> token
     "startTime" : "14:00",
     "endTime" : "15:00",
     "status" : "UNAVAILABLE"
   } ]
 }, {
+<<<<<<< HEAD
   "id" : 100,
   "name" : "Campo 2",
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
   "company" : {
     "id" : 95,
+=======
+  "id" : 262243,
+  "name" : "Campo 2",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "id" : 262238,
+>>>>>>> token
     "name" : "ArcloSociety",
     "cnpj" : "2983492472",
     "address" : "Rua Vicente Castro Filho, 1750",
@@ -2141,7 +2224,11 @@ Content-Length: 899
 <h4 id="_example_request_15"><a class="link" href="#_example_request_15">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/105' -i -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/262248' -i -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -2151,6 +2238,7 @@ Content-Length: 899
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 551
 
 {
@@ -2159,6 +2247,16 @@ Content-Length: 551
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
   "company" : {
     "id" : 101,
+=======
+Content-Length: 563
+
+{
+  "id" : 262248,
+  "name" : "Campo 1",
+  "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+  "company" : {
+    "id" : 262244,
+>>>>>>> token
     "name" : "ArcloSociety",
     "cnpj" : "2983492472",
     "address" : "Rua Vicente Castro Filho, 1750",
@@ -2166,12 +2264,20 @@ Content-Length: 551
     "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf"
   },
   "schedules" : [ {
+<<<<<<< HEAD
     "id" : 103,
+=======
+    "id" : 262246,
+>>>>>>> token
     "startTime" : "12:00",
     "endTime" : "13:00",
     "status" : "AVAILABLE"
   }, {
+<<<<<<< HEAD
     "id" : 104,
+=======
+    "id" : 262247,
+>>>>>>> token
     "startTime" : "14:00",
     "endTime" : "15:00",
     "status" : "UNAVAILABLE"
@@ -2244,7 +2350,11 @@ Content-Length: 551
     "address" : "Rua Vicente Castro Filho, 1750",
     "phone" : "(85) 42938274",
     "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+<<<<<<< HEAD
     "id" : 86
+=======
+    "id" : 262229
+>>>>>>> token
   },
   "schedules" : [ {
     "startTime" : "12:00",
@@ -2350,7 +2460,11 @@ Content-Length: 551
 <h4 id="_example_request_17"><a class="link" href="#_example_request_17">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/84' -i -X PUT -H 'Content-Type: application/json' -d '{
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/262227' -i -X PUT -H 'Content-Type: application/json' -d '{
+>>>>>>> token
   "name" : "New name",
   "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
   "company" : {
@@ -2359,10 +2473,17 @@ Content-Length: 551
     "address" : "Rua Vicente Castro Filho, 1750",
     "phone" : "(85) 42938274",
     "photo" : "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf",
+<<<<<<< HEAD
     "id" : 80
   },
   "schedules" : [ ],
   "id" : 84
+=======
+    "id" : 262223
+  },
+  "schedules" : [ ],
+  "id" : 262227
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -2407,7 +2528,11 @@ Content-Length: 551
 <h4 id="_example_request_18"><a class="link" href="#_example_request_18">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/78' -i -X DELETE -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/field/262221' -i -X DELETE -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -2429,6 +2554,31 @@ Content-Length: 551
 <h3 id="resources-reservations-list-by-day"><a class="link" href="#resources-reservations-list-by-day">Listing reservations by day</a></h3>
 <div class="paragraph">
 <p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by date.</p>
+<<<<<<< HEAD
+=======
+</div>
+<div class="sect3">
+<h4 id="_path_parameters_12"><a class="link" href="#_path_parameters_12">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 12. /reservations/{day}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The day and date with the format dd-MM-yyyy</p></td>
+</tr>
+</tbody>
+</table>
+>>>>>>> token
 </div>
 <div class="sect3">
 <h4 id="_path_parameters_12"><a class="link" href="#_path_parameters_12">Path parameters</a></h4>
@@ -3106,6 +3256,627 @@ Content-Length: 362
 </table>
 </div>
 <div class="sect3">
+<<<<<<< HEAD
+<h4 id="_example_request_24"><a class="link" href="#_example_request_24">Example request</a></h4>
+=======
+<h4 id="_example_request_19"><a class="link" href="#_example_request_19">Example request</a></h4>
+>>>>>>> token
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservations/status/OPEN/company/2983492472' -i -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<<<<<<< HEAD
+<h4 id="_example_response_24"><a class="link" href="#_example_response_24">Example response</a></h4>
+=======
+<h4 id="_example_response_19"><a class="link" href="#_example_response_19">Example response</a></h4>
+>>>>>>> token
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 368
+
+[ {
+<<<<<<< HEAD
+  "id" : 186,
+=======
+  "id" : 262309,
+>>>>>>> token
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}, {
+<<<<<<< HEAD
+  "id" : 187,
+=======
+  "id" : 262310,
+>>>>>>> token
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "14:00",
+  "endTime" : "15:00",
+  "reservationStatus" : "OPEN"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resources-reservations-list-by-day-and-company"><a class="link" href="#resources-reservations-list-by-day-and-company">Listing reservations by day and Company</a></h3>
+<div class="paragraph">
+<p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by date and Company.</p>
+</div>
+<div class="sect3">
+<<<<<<< HEAD
+<h4 id="_path_parameters_18"><a class="link" href="#_path_parameters_18">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 18. /reservation/{id}</caption>
+=======
+<h4 id="_path_parameters_13"><a class="link" href="#_path_parameters_13">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 13. /reservations/{day}/company/{cnpj}</caption>
+>>>>>>> token
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The day and date with the format dd-MM-yyyy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cnpj</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Company CNPJ.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_9"><a class="link" href="#_response_structure_9">Response structure</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the field name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the client e-mail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].endTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].reservationStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example_request_20"><a class="link" href="#_example_request_20">Example request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservations/16-04-2016/company/2983492472' -i -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_response_20"><a class="link" href="#_example_response_20">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 368
+
+[ {
+  "id" : 262258,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}, {
+  "id" : 262259,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "14:00",
+  "endTime" : "15:00",
+  "reservationStatus" : "OPEN"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resources-reservations-list-by-status"><a class="link" href="#resources-reservations-list-by-status">Listing reservations by status</a></h3>
+<div class="paragraph">
+<p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by status.</p>
+</div>
+<div class="sect3">
+<h4 id="_path_parameters_14"><a class="link" href="#_path_parameters_14">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 14. /reservations/status/{status}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status can be either: OPEN, CONFIRMED or CANCELED.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_10"><a class="link" href="#_response_structure_10">Response structure</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the field name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the client e-mail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].endTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].reservationStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example_request_21"><a class="link" href="#_example_request_21">Example request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservations/status/OPEN' -i -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_response_21"><a class="link" href="#_example_response_21">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 368
+
+[ {
+  "id" : 262268,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}, {
+  "id" : 262269,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "14:00",
+  "endTime" : "15:00",
+  "reservationStatus" : "OPEN"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resources-reservations-list-by-company"><a class="link" href="#resources-reservations-list-by-company">Listing reservations by Company</a></h3>
+<div class="paragraph">
+<p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by Company.</p>
+</div>
+<div class="sect3">
+<h4 id="_path_parameters_15"><a class="link" href="#_path_parameters_15">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 15. /reservations/company/{cnpj}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cnpj</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The company CNPJ.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_11"><a class="link" href="#_response_structure_11">Response structure</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the field name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the client e-mail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].endTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].reservationStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example_request_22"><a class="link" href="#_example_request_22">Example request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservations/company/2983492472' -i -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_response_22"><a class="link" href="#_example_response_22">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 368
+
+[ {
+  "id" : 262299,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}, {
+  "id" : 262300,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "14:00",
+  "endTime" : "15:00",
+  "reservationStatus" : "OPEN"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resources-reservations-list-by-client"><a class="link" href="#resources-reservations-list-by-client">Listing reservations by Client</a></h3>
+<div class="paragraph">
+<p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by Client.</p>
+</div>
+<div class="sect3">
+<h4 id="_path_parameters_16"><a class="link" href="#_path_parameters_16">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 16. /reservations/client/{email}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Client e-mail.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_12"><a class="link" href="#_response_structure_12">Response structure</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the field name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the client e-mail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].endTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].reservationStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example_request_23"><a class="link" href="#_example_request_23">Example request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservations/client/client1@email.com' -i -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_response_23"><a class="link" href="#_example_response_23">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Disposition: inline;filename=f.txt
+Content-Type: application/json;charset=UTF-8
+Content-Length: 368
+
+[ {
+  "id" : 262339,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "12:00",
+  "endTime" : "13:00",
+  "reservationStatus" : "OPEN"
+}, {
+  "id" : 262340,
+  "client" : "client1@email.com",
+  "field" : "Campo 1",
+  "date" : "16-04-2016",
+  "startTime" : "14:00",
+  "endTime" : "15:00",
+  "reservationStatus" : "OPEN"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resources-reservations-list-by-status-and-company"><a class="link" href="#resources-reservations-list-by-status-and-company">Listing reservations by Status and Company</a></h3>
+<div class="paragraph">
+<p>A <code>GET</code> request will list all of the service&#8217;s reservations fetched by Company and Status.</p>
+</div>
+<div class="sect3">
+<h4 id="_path_parameters_17"><a class="link" href="#_path_parameters_17">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 17. /reservations/status/{status}/company/{cnpj}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status can be either: OPEN, CONFIRMED or CANCELED.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cnpj</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The company CNPJ.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_13"><a class="link" href="#_response_structure_13">Response structure</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the field name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Just the client e-mail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].endTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[].reservationStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
 <h4 id="_example_request_24"><a class="link" href="#_example_request_24">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
@@ -3119,10 +3890,10 @@ Content-Length: 362
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 362
+Content-Length: 368
 
 [ {
-  "id" : 186,
+  "id" : 262329,
   "client" : "client1@email.com",
   "field" : "Campo 1",
   "date" : "16-04-2016",
@@ -3130,7 +3901,7 @@ Content-Length: 362
   "endTime" : "13:00",
   "reservationStatus" : "OPEN"
 }, {
-  "id" : 187,
+  "id" : 262330,
   "client" : "client1@email.com",
   "field" : "Campo 1",
   "date" : "16-04-2016",
@@ -3227,7 +3998,11 @@ Content-Length: 362
 <h4 id="_example_request_25"><a class="link" href="#_example_request_25">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/206' -i -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/262349' -i -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -3237,10 +4012,14 @@ Content-Length: 362
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 178
+Content-Length: 181
 
 {
+<<<<<<< HEAD
   "id" : 206,
+=======
+  "id" : 262349,
+>>>>>>> token
   "client" : "client1@email.com",
   "field" : "Campo 1",
   "date" : "16-04-2016",
@@ -3432,14 +4211,22 @@ Content-Length: 178
 <h4 id="_example_request_27"><a class="link" href="#_example_request_27">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/176' -i -X PUT -H 'Content-Type: application/json' -d '{
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/262319' -i -X PUT -H 'Content-Type: application/json' -d '{
+>>>>>>> token
   "client" : "client1@email.com",
   "field" : "Campo 1",
   "date" : "18-04-2016",
   "startTime" : "12:00",
   "endTime" : "13:00",
   "reservationStatus" : "CANCELED",
+<<<<<<< HEAD
   "id" : 176
+=======
+  "id" : 262319
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -3484,7 +4271,11 @@ Content-Length: 178
 <h4 id="_example_request_28"><a class="link" href="#_example_request_28">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/135' -i -X DELETE -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/reservation/262278' -i -X DELETE -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -3560,10 +4351,14 @@ Content-Length: 178
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 102
+Content-Length: 105
 
 [ {
+<<<<<<< HEAD
   "id" : 218,
+=======
+  "id" : 262361,
+>>>>>>> token
   "client" : "client1@email.com",
   "company" : "2983492472",
   "isAdmin" : true
@@ -3642,7 +4437,11 @@ Content-Length: 102
 <h4 id="_example_request_30"><a class="link" href="#_example_request_30">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/228' -i -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/262371' -i -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -3652,10 +4451,17 @@ Content-Length: 102
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 98
 
 {
   "id" : 228,
+=======
+Content-Length: 101
+
+{
+  "id" : 262371,
+>>>>>>> token
   "client" : "client1@email.com",
   "company" : "2983492472",
   "isAdmin" : true
@@ -3745,10 +4551,14 @@ Content-Length: 98
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Disposition: inline;filename=f.txt
 Content-Type: application/json;charset=UTF-8
-Content-Length: 98
+Content-Length: 101
 
 {
+<<<<<<< HEAD
   "id" : 223,
+=======
+  "id" : 262366,
+>>>>>>> token
   "client" : "client1@email.com",
   "company" : "2983492472",
   "isAdmin" : true
@@ -3848,10 +4658,17 @@ Content-Length: 98
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Disposition: inline;filename=f.txt
 Content-Type: application/json;charset=UTF-8
+<<<<<<< HEAD
 Content-Length: 201
 
 {
   "id" : 231,
+=======
+Content-Length: 204
+
+{
+  "id" : 262374,
+>>>>>>> token
   "name" : "ArcloSociety",
   "cnpj" : "2983492472",
   "address" : "Rua Vicente Castro Filho, 1750",
@@ -4003,11 +4820,19 @@ Content-Length: 201
 <h4 id="_example_request_34"><a class="link" href="#_example_request_34">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/243' -i -X PUT -H 'Content-Type: application/json' -d '{
   "client" : "client1@email.com",
   "company" : "2983492472",
   "isAdmin" : false,
   "id" : 243
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/262386' -i -X PUT -H 'Content-Type: application/json' -d '{
+  "client" : "client1@email.com",
+  "company" : "2983492472",
+  "isAdmin" : false,
+  "id" : 262386
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -4052,7 +4877,11 @@ Content-Length: 201
 <h4 id="_example_request_35"><a class="link" href="#_example_request_35">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/238' -i -X DELETE -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/client-company/262381' -i -X DELETE -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -4128,10 +4957,14 @@ Content-Length: 201
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 91
+Content-Length: 95
 
 [ {
+<<<<<<< HEAD
   "id" : 66,
+=======
+  "id" : 262209,
+>>>>>>> token
   "name" : "Player 1",
   "level" : 5,
   "client" : "client1@email.com"
@@ -4210,7 +5043,11 @@ Content-Length: 91
 <h4 id="_example_request_37"><a class="link" href="#_example_request_37">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/69' -i -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/262212' -i -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
@@ -4220,10 +5057,14 @@ Content-Length: 91
 <div class="content">
 <pre class="highlight"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 87
+Content-Length: 91
 
 {
+<<<<<<< HEAD
   "id" : 69,
+=======
+  "id" : 262212,
+>>>>>>> token
   "name" : "Player 1",
   "level" : 5,
   "client" : "client1@email.com"
@@ -4373,11 +5214,19 @@ Content-Length: 87
 <h4 id="_example_request_39"><a class="link" href="#_example_request_39">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/60' -i -X PUT -H 'Content-Type: application/json' -d '{
   "client" : "client1@email.com",
   "name" : "New Player",
   "level" : 3,
   "id" : 60
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/262203' -i -X PUT -H 'Content-Type: application/json' -d '{
+  "client" : "client1@email.com",
+  "name" : "New Player",
+  "level" : 3,
+  "id" : 262203
+>>>>>>> token
 }'</code></pre>
 </div>
 </div>
@@ -4422,7 +5271,11 @@ Content-Length: 87
 <h4 id="_example_request_40"><a class="link" href="#_example_request_40">Example request</a></h4>
 <div class="listingblock">
 <div class="content">
+<<<<<<< HEAD
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/63' -i -X DELETE -H 'Accept: application/json'</code></pre>
+=======
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/player/262206' -i -X DELETE -H 'Accept: application/json'</code></pre>
+>>>>>>> token
 </div>
 </div>
 </div>
