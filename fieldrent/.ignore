@@ -82,6 +82,6 @@ overridedb.*
 *.jar
 .DS_Store
 .factorypath
-
+.idea/
 
 
