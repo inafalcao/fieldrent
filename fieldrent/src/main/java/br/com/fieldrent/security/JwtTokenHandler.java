@@ -1,10 +1,9 @@
 package br.com.fieldrent.security;
 
-import br.com.rbt.celpa.model.security.User;
+import br.com.fieldrent.model.Client;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -16,19 +15,19 @@ import java.util.Date;
 @Service
 public class JwtTokenHandler {
 
-    public static final int TOKEN_EXPIRATION_TIME = 30;
+    public static final int TOKEN_EXPIRATION_TIME = 30; // in minutes
 
-    private String secret;
+    private String secret = "field@rent87123!secret";
 
     @Autowired
     private UserService userDetailsService;
 
-    @Autowired
+    /*@Autowired
     public JwtTokenHandler(@Value("${token.secret}") String secret) {
         this.secret = secret;
-    }
+    }*/
 
-    public User parseUserFromToken(String token) {
+    public Client parseUserFromToken(String token) {
         String username = Jwts.parser()
                 .setSigningKey(secret)
                 .parseClaimsJws(token)
@@ -46,7 +45,7 @@ public class JwtTokenHandler {
         return username;
     }
 
-    public String createTokenForUser(User user) {
+    public String createTokenForUser(Client user) {
         final long ONE_MINUTE_IN_MILLIS = 60000; // millisecs
         Calendar date = Calendar.getInstance();
         long t = date.getTimeInMillis();

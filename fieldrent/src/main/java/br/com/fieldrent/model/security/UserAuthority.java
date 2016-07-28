@@ -1,5 +1,6 @@
 package br.com.fieldrent.model.security;
 
+import br.com.fieldrent.model.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -21,16 +22,16 @@ public class UserAuthority implements GrantedAuthority {
     @NotNull
     @ManyToOne
     @JsonIgnore
-    private User user;
+    private Client user;
 
     @NotNull
     private String authority;
 
-    public User getUser() {
+    public Client getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Client user) {
         this.user = user;
     }
 

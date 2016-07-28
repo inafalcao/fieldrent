@@ -1,9 +1,9 @@
+/*
 package br.com.fieldrent.model.security;
 
 
 import br.com.fieldrent.model.*;
-import br.com.rbt.celpa.model.Entidade;
-import br.com.rbt.celpa.security.UserRole;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cache;
@@ -175,3 +175,4 @@ public class User extends br.com.fieldrent.model.Entity implements UserDetails  
     }
 
 }
+*/

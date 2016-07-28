@@ -5,6 +5,7 @@ import br.com.fieldrent.model.ClientCompany;
 import br.com.fieldrent.model.Company;
 import br.com.fieldrent.repository.ClientCompanyRepository;
 import br.com.fieldrent.repository.CompanyRepository;
+import br.com.fieldrent.security.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,8 @@ public class ClientCompanyController {
     @RequestMapping(value = "/client-company", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody ClientCompany clientCompany) {
+        clientCompany.getClient().grantRole(UserRole.USER);
+        clientCompany.getClient().grantRole(UserRole.ADMIN);
         clientCompanyRepository.save(clientCompany);
     }
 

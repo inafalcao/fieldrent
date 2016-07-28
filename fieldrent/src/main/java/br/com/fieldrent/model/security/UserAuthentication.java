@@ -1,5 +1,6 @@
 package br.com.fieldrent.model.security;
 
+import br.com.fieldrent.model.Client;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -10,10 +11,10 @@ import java.util.Collection;
  */
 public class UserAuthentication implements Authentication {
 
-    private final User user;
+    private final Client user;
     private boolean authenticated = true;
 
-    public UserAuthentication(User user) {
+    public UserAuthentication(Client user) {
         this.user = user;
     }
 
@@ -28,7 +29,7 @@ public class UserAuthentication implements Authentication {
     }
 
     @Override
-    public User getDetails() {
+    public Client getDetails() {
         return user;
     }
 

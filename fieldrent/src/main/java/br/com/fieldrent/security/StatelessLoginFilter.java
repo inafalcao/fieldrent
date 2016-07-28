@@ -1,13 +1,14 @@
 package br.com.fieldrent.security;
 
-import br.com.rbt.celpa.model.security.User;
-import br.com.rbt.celpa.model.security.UserAuthentication;
+import br.com.fieldrent.model.Client;
+import br.com.fieldrent.model.security.UserAuthentication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -37,7 +38,7 @@ public class StatelessLoginFilter extends AbstractAuthenticationProcessingFilter
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
 
-        final User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
+        final Client user = new ObjectMapper().readValue(request.getInputStream(), Client.class);
         final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken(
                 user.getUsername(), user.getPassword());
 
@@ -49,7 +50,7 @@ public class StatelessLoginFilter extends AbstractAuthenticationProcessingFilter
                                             FilterChain chain, Authentication authentication) throws IOException, ServletException {
 
         // Lookup the complete User object from the database and create an Authentication for it
-        final User authenticatedUser = userDetailsService.loadUserByUsername(authentication.getName());
+        final Client authenticatedUser = userDetailsService.loadUserByUsername(authentication.getName());
         final UserAuthentication userAuthentication = new UserAuthentication(authenticatedUser);
 
         // Add the custom token as HTTP header to the response

@@ -1,7 +1,8 @@
 package br.com.fieldrent.security;
 
-import br.com.rbt.celpa.model.security.User;
-import br.com.rbt.celpa.model.security.UserAuthentication;
+
+import br.com.fieldrent.model.Client;
+import br.com.fieldrent.model.security.UserAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -26,14 +27,14 @@ public class JwtTokenAuthenticationService {
     }
 
     public void addAuthentication(HttpServletResponse response, UserAuthentication authentication) {
-        final User user = authentication.getDetails();
+        final Client user = authentication.getDetails();
         response.addHeader(AUTH_HEADER_NAME, tokenHandler.createTokenForUser(user));
     }
 
     public Authentication getAuthentication(HttpServletRequest request) {
         final String token = request.getHeader(AUTH_HEADER_NAME);
         if (token != null) {
-            final User user = tokenHandler.parseUserFromToken(token);
+            final Client user = tokenHandler.parseUserFromToken(token);
             if (user != null) {
                 return new UserAuthentication(user);
             }

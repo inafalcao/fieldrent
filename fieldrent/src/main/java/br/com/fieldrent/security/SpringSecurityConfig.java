@@ -1,6 +1,5 @@
 package br.com.fieldrent.security;
 
-import br.com.rbt.celpa.postgre.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +28,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtTokenAuthenticationService tokenAuthenticationService;
 
-    @Autowired
-    UserRepository userRepository;
+    /*@Autowired
+    ClientRepository userRepository;*/
 
     public SpringSecurityConfig() {
         super(true);
@@ -47,31 +46,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**").permitAll()
-                .antMatchers("/directives/**").permitAll()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/").permitAll()
+                //.antMatchers(HttpMethod.POST, "/client").permitAll()
+                //.antMatchers(HttpMethod.POST, "/client-company").permitAll()
+                //.antMatchers(HttpMethod.POST, "/api/login").permitAll()
 
-                .antMatchers("/**/add").hasRole("ADMIN")
-                .antMatchers("/**/edit/**").hasRole("ADMIN")
-                .antMatchers("/**/update").hasRole("ADMIN")
-                .antMatchers("/**/delete/**").hasRole("ADMIN")
-                .antMatchers("/operation/**").hasRole("ADMIN")
-                .antMatchers("/programming/**").hasRole("ADMIN")
-                .antMatchers("/grc/arm/**").hasRole("ADMIN")
-                .antMatchers("/grc/disarm/**").hasRole("ADMIN")
+                //.antMatchers("/**/add").hasRole("ADMIN")
 
-                .antMatchers("/**").hasRole("USER")
+                //.antMatchers("/*").hasRole("USER");
                 .anyRequest().hasRole("USER");
 
-        // custom JSON based authentication by POST of {"username":"<name>","password":"<password>"} which sets the token header upon authentication
+        // custom JSON based authentication by POST of {"email":"<name>","password":"<password>"} which sets the token header upon authentication
         http.addFilterBefore(new StatelessLoginFilter("/api/login", tokenAuthenticationService, userDetailsService, authenticationManager()), UsernamePasswordAuthenticationFilter.class);
 
         // custom Token based authentication based on the header previously given to the client
         http.addFilterBefore(new StatelessAuthenticationFilter(tokenAuthenticationService), UsernamePasswordAuthenticationFilter.class);
 
-        //String encript = new BCryptPasswordEncoder().encode("celpa@123!");
+        String encript = new BCryptPasswordEncoder().encode("field@123!");
 
     }
 
