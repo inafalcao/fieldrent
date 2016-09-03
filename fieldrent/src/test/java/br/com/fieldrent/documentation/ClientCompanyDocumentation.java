@@ -27,6 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -83,7 +85,8 @@ public class ClientCompanyDocumentation {
     @Test
     public void listClientCompany() throws Exception {
 
-        this.mockMvc.perform(get("/client-company/").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/client-company/").accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                                 responseFields(
@@ -93,14 +96,19 @@ public class ClientCompanyDocumentation {
                                         fieldWithPath("[].isAdmin").description("")
                                 )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     @Test
     public void getClientCompany() throws Exception {
 
         Long clientCompanyId = clientCompanyRepository.findAll().get(0).getId();
-        this.mockMvc.perform(get("/client-company/{id}", clientCompanyId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/client-company/{id}", clientCompanyId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -115,14 +123,19 @@ public class ClientCompanyDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     @Test
     public void getClientCompanyByEmail() throws Exception {
 
         String clientEmail = clientCompanyRepository.findAll().get(0).getClient().getEmail();
-        this.mockMvc.perform(get("/client-company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/client-company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -137,14 +150,19 @@ public class ClientCompanyDocumentation {
                         pathParameters(
                                 parameterWithName("email").description(""))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     @Test
     public void getCompanyByClient() throws Exception {
 
         String clientEmail = clientCompanyRepository.findAll().get(0).getClient().getEmail();
-        this.mockMvc.perform(get("/client-company/company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/client-company/company/email/{email}", clientEmail).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -163,7 +181,11 @@ public class ClientCompanyDocumentation {
                         pathParameters(
                                 parameterWithName("email").description(""))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     @Test
@@ -192,6 +214,7 @@ public class ClientCompanyDocumentation {
 
         this.mockMvc.perform(put("/client-company/{id}", toUpdateClientCompany.getId())
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .content(testMock.updateClientCompany(toUpdateClientCompany)))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
@@ -207,19 +230,28 @@ public class ClientCompanyDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     @Test
     public void deleteClientCompany() throws Exception {
         Long clientCompanyId = clientCompanyRepository.findAll().get(0).getId();
-        this.mockMvc.perform(delete("/client-company/{id}", clientCompanyId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(delete("/client-company/{id}", clientCompanyId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to be sent with every request."))));
     }
 
     private static class ConstrainedFields {

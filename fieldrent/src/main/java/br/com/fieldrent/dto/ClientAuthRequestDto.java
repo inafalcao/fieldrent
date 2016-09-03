@@ -1,5 +1,7 @@
 package br.com.fieldrent.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -8,12 +10,14 @@ import javax.validation.constraints.Size;
 /**
  * Created by inafalcao on 2/29/16.
  */
-@Entity
-@Table
 public class ClientAuthRequestDto extends br.com.fieldrent.model.Entity {
 
+    @NotNull
+    @NotEmpty
     private String email;
 
+    @NotNull
+    @NotEmpty
     private String password;
 
     public ClientAuthRequestDto() {

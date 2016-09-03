@@ -5,6 +5,7 @@ import br.com.fieldrent.dto.PlayerDto;
 import br.com.fieldrent.dto.ReservationDto;
 import br.com.fieldrent.model.*;
 import br.com.fieldrent.repository.*;
+import br.com.fieldrent.security.UserRole;
 import com.google.gson.Gson;
 import org.joda.time.DateTime;
 import org.joda.time.LocalTime;
@@ -48,9 +49,11 @@ public class TestMock {
     }
 
     public void createClients() {
-        Client c1 = new Client("Client1", "passwd1", "client1@email.com", "99999999", false,
+        Client c1 = new Client("Client1", "field@123!", "client@email1.com", "99999999", false,
                 "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf", true);
         c1.generatePhotoLobFromBase64Photo();
+        c1.grantRole(UserRole.USER);
+
         Client c2 = new Client("Client2", "passwd2", "client2@email.com", "00000000", false,
                 "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf", false);
         c2.generatePhotoLobFromBase64Photo();

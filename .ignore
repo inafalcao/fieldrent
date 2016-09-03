@@ -85,3 +85,5 @@ overridedb.*
 .idea/
 
 
+/fieldrent/target/
+fieldrent/target/

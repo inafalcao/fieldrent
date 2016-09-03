@@ -67,7 +67,6 @@ public class ClientController {
         return response;
     }
 
-<<<<<<< HEAD
     @RequestMapping(value="/client/facebook/{email:.+}", method = RequestMethod.GET)
     public boolean isFacebookUser(@PathVariable("email") String email) {
         Client client = clientRepository.findByEmail(email);
@@ -77,16 +76,16 @@ public class ClientController {
         return false; // TODO: deveria dar um 404, eu acho
     }
 
-=======
->>>>>>> token
     @RequestMapping(value = "/client/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id, @RequestBody Client client) {
         Client existingClient = clientRepository.findOne(id);
-        client.setId(existingClient.getId());
-        // Do not change passwords via update
-        client.setPassword(existingClient.getPassword());
-        existingClient = client;
+        existingClient.setName(client.getName());
+        existingClient.setEmail(client.getEmail());
+        existingClient.setPhone(client.getPhone());
+        existingClient.setMonthlySubscriber(client.getMonthlySubscriber());
+        existingClient.setPhoto(client.getPhoto());
+        existingClient.setIsFacebookUser(client.getIsFacebookUser());
         clientRepository.save(existingClient);
     }
 

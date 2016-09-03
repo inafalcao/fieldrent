@@ -13,8 +13,6 @@ import javax.validation.constraints.Size;
 /**
  * Created by inafalcao on 2/29/16.
  */
-@Entity
-@Table
 public class ClientCompanyDto extends br.com.fieldrent.model.Entity {
 
     @NotNull

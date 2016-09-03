@@ -87,6 +87,10 @@ The Client resource represents the mobile application user.
 
 A `GET` request will list all of the service's clients.
 
+==== Request Headers
+
+include::{snippets}/list-clients/request-headers.adoc[]
+
 ==== Response structure
 
 include::{snippets}/list-clients/response-fields.adoc[]
@@ -107,6 +111,10 @@ include::{snippets}/list-clients/http-response.adoc[]
 A `GET` request will show one client fetched by its Id.
 
 Note that password company is not sent back on this request.
+
+==== Request Headers
+
+include::{snippets}/get-client/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -132,6 +140,10 @@ include::{snippets}/get-client/http-response.adoc[]
 A `GET` request will show one client fetched by its unique e-mail.
 
 Note that password company is not sent back on this request.
+
+==== Request Headers
+
+include::{snippets}/get-client-by-email/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -175,6 +187,10 @@ include::{snippets}/create-client/http-response.adoc[]
 
 A `PUT` is used to update a Client resource.
 
+==== Request Headers
+
+include::{snippets}/update-client/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/update-client/path-parameters.adoc[]
@@ -198,6 +214,10 @@ include::{snippets}/update-client/http-response.adoc[]
 
 A `DELETE` is used to remove a Client resource.
 
+==== Request Headers
+
+include::{snippets}/delete-client/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/delete-client/path-parameters.adoc[]
@@ -218,6 +238,10 @@ include::{snippets}/delete-client/http-response.adoc[]
 
 A `DELETE` is used to remove a Client resource.
 
+==== Request Headers
+
+include::{snippets}/delete-client-by-email/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/delete-client-by-email/path-parameters.adoc[]
@@ -233,27 +257,6 @@ include::{snippets}/delete-client-by-email/http-response.adoc[]
 
 
 
-[[resources-client-authenticate]]
-=== Authenticating client
-
-A `POST` is used to authenticate Clients.
-
-Notice that if the client is a ClientCompany, the Client will be null, and you can check if it is an admin with the flag
- 'admin'.
-
-If the client is not a ClientCompany, then clientCompany will be null, and you're guaranteed that your client is not an
-admin.
-
-If both client and clientCompany are null, then the client is not authenticated, and an UNAUTHORIZED will be returned.
-
-==== Example request
-
-include::{snippets}/authenticate-client/curl-request.adoc[]
-
-==== Example response
-
-include::{snippets}/authenticate-client/http-response.adoc[]
-
 
 
 [[resources-company]]
@@ -264,6 +267,10 @@ include::{snippets}/authenticate-client/http-response.adoc[]
 === Listing companies
 
 A `GET` request will list all of the service's companies.
+
+==== Request Headers
+
+include::{snippets}/list-companies/request-headers.adoc[]
 
 ==== Response structure
 
@@ -283,6 +290,10 @@ include::{snippets}/list-companies/http-response.adoc[]
 === Show company by id
 
 A `GET` request will show one company fetched by its Id.
+
+==== Request Headers
+
+include::{snippets}/get-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -307,6 +318,10 @@ include::{snippets}/get-company/http-response.adoc[]
 
 A `POST` is used to create a Company resource.
 
+==== Request Headers
+
+include::{snippets}/create-company/request-headers.adoc[]
+
 ==== Request structure
 
 include::{snippets}/create-company/request-fields.adoc[]
@@ -325,6 +340,10 @@ include::{snippets}/create-company/http-response.adoc[]
 === Updating company by id
 
 A `PUT` is used to update a Company resource.
+
+==== Request Headers
+
+include::{snippets}/update-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -348,6 +367,10 @@ include::{snippets}/update-company/http-response.adoc[]
 === Deleting company by id
 
 A `DELETE` is used to remove a Company resource.
+
+==== Request Headers
+
+include::{snippets}/delete-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -375,6 +398,10 @@ include::{snippets}/delete-company/http-response.adoc[]
 
 A `GET` request will list all of the service's Fields.
 
+==== Request Headers
+
+include::{snippets}/list-fields/request-headers.adoc[]
+
 ==== Response structure
 
 include::{snippets}/list-fields/response-fields.adoc[]
@@ -393,6 +420,10 @@ include::{snippets}/list-fields/http-response.adoc[]
 === Show Field by id
 
 A `GET` request will show one Field fetched by its Id.
+
+==== Request Headers
+
+include::{snippets}/get-field/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -417,6 +448,10 @@ include::{snippets}/get-field/http-response.adoc[]
 
 A `POST` is used to create a Field resource.
 
+==== Request Headers
+
+include::{snippets}/create-field/request-headers.adoc[]
+
 ==== Request structure
 
 include::{snippets}/create-field/request-fields.adoc[]
@@ -435,6 +470,10 @@ include::{snippets}/create-field/http-response.adoc[]
 === Updating Field by id
 
 A `PUT` is used to update a Field resource.
+
+==== Request Headers
+
+include::{snippets}/update-field/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -458,6 +497,10 @@ include::{snippets}/update-field/http-response.adoc[]
 === Deleting Field by id
 
 A `DELETE` is used to remove a Field resource.
+
+==== Request Headers
+
+include::{snippets}/delete-field/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -484,6 +527,10 @@ include::{snippets}/delete-field/http-response.adoc[]
 
 A `GET` request will list all of the service's reservations fetched by date.
 
+==== Request Headers
+
+include::{snippets}/list-reservations-by-day/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/list-reservations-by-day/path-parameters.adoc[]
@@ -506,6 +553,10 @@ include::{snippets}/list-reservations-by-day/http-response.adoc[]
 === Listing reservations by day and Company
 
 A `GET` request will list all of the service's reservations fetched by date and Company.
+
+==== Request Headers
+
+include::{snippets}/list-reservations-by-day-and-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -530,6 +581,10 @@ include::{snippets}/list-reservations-by-day-and-company/http-response.adoc[]
 
 A `GET` request will list all of the service's reservations fetched by status.
 
+==== Request Headers
+
+include::{snippets}/list-reservations-by-status/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/list-reservations-by-status/path-parameters.adoc[]
@@ -551,6 +606,10 @@ include::{snippets}/list-reservations-by-status/http-response.adoc[]
 === Listing reservations by Company
 
 A `GET` request will list all of the service's reservations fetched by Company.
+
+==== Request Headers
+
+include::{snippets}/list-reservations-by-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -575,6 +634,10 @@ include::{snippets}/list-reservations-by-company/http-response.adoc[]
 
 A `GET` request will list all of the service's reservations fetched by Client.
 
+==== Request Headers
+
+include::{snippets}/list-reservations-by-client/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/list-reservations-by-client/path-parameters.adoc[]
@@ -598,6 +661,10 @@ include::{snippets}/list-reservations-by-client/http-response.adoc[]
 
 A `GET` request will list all of the service's reservations fetched by Company and Status.
 
+==== Request Headers
+
+include::{snippets}/list-reservations-by-status-and-company/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/list-reservations-by-status-and-company/path-parameters.adoc[]
@@ -619,6 +686,10 @@ include::{snippets}/list-reservations-by-status-and-company/http-response.adoc[]
 === Show Reservation by id
 
 A `GET` request will show one reservation fetched by its Id.
+
+==== Request Headers
+
+include::{snippets}/get-reservation/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -643,6 +714,10 @@ include::{snippets}/get-reservation/http-response.adoc[]
 
 A `POST` is used to create a Reservation resource.
 
+==== Request Headers
+
+include::{snippets}/create-reservation/request-headers.adoc[]
+
 ==== Request structure
 
 include::{snippets}/create-reservation/request-fields.adoc[]
@@ -661,6 +736,10 @@ include::{snippets}/create-reservation/http-response.adoc[]
 === Updating Reservation by id
 
 A `PUT` is used to update a Reservation resource.
+
+==== Request Headers
+
+include::{snippets}/update-reservation/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -684,6 +763,10 @@ include::{snippets}/update-reservation/http-response.adoc[]
 === Deleting Reservation by id
 
 A `DELETE` is used to remove a Reservation resource.
+
+==== Request Headers
+
+include::{snippets}/delete-reservation/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -709,6 +792,10 @@ include::{snippets}/delete-reservation/http-response.adoc[]
 
 A `GET` request will list all of the service's clients company.
 
+==== Request Headers
+
+include::{snippets}/list-client-company/request-headers.adoc[]
+
 ==== Response structure
 
 include::{snippets}/list-client-company/response-fields.adoc[]
@@ -727,6 +814,10 @@ include::{snippets}/list-client-company/http-response.adoc[]
 === Show ClientCompany by id
 
 A `GET` request will show one client company fetched by its Id.
+
+==== Request Headers
+
+include::{snippets}/get-client-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -751,6 +842,10 @@ include::{snippets}/get-client-company/http-response.adoc[]
 
 A `GET` request will show one client company fetched by its e-mail.
 
+==== Request Headers
+
+include::{snippets}/get-client-company-by-email/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/get-client-company-by-email/path-parameters.adoc[]
@@ -773,6 +868,10 @@ include::{snippets}/get-client-company-by-email/http-response.adoc[]
 === Show Company by Client e-mail
 
 A `GET` request will show one company fetched by its Client (e-mail).
+
+==== Request Headers
+
+include::{snippets}/get-company-by-client/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -816,6 +915,10 @@ include::{snippets}/create-client-company/http-response.adoc[]
 
 A `PUT` is used to update a Reservation resource.
 
+==== Request Headers
+
+include::{snippets}/update-client-company/request-headers.adoc[]
+
 ==== Path parameters
 
 include::{snippets}/update-client-company/path-parameters.adoc[]
@@ -838,6 +941,10 @@ include::{snippets}/update-client-company/http-response.adoc[]
 === Deleting ClientCompany by id
 
 A `DELETE` is used to remove a ClientCompany resource.
+
+==== Request Headers
+
+include::{snippets}/delete-client-company/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -865,6 +972,10 @@ include::{snippets}/delete-client-company/http-response.adoc[]
 
 A `GET` request will list all of the service's players.
 
+==== Request Headers
+
+include::{snippets}/list-players/request-headers.adoc[]
+
 ==== Response structure
 
 include::{snippets}/list-players/response-fields.adoc[]
@@ -883,6 +994,10 @@ include::{snippets}/list-players/http-response.adoc[]
 === Show Player by id
 
 A `GET` request will show one player fetched by its Id.
+
+==== Request Headers
+
+include::{snippets}/get-player/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -907,6 +1022,10 @@ include::{snippets}/get-player/http-response.adoc[]
 
 A `POST` is used to create a Player resource.
 
+==== Request Headers
+
+include::{snippets}/create-player/request-headers.adoc[]
+
 ==== Request structure
 
 include::{snippets}/create-player/request-fields.adoc[]
@@ -925,6 +1044,10 @@ include::{snippets}/create-player/http-response.adoc[]
 === Updating player by id
 
 A `PUT` is used to update a Player resource.
+
+==== Request Headers
+
+include::{snippets}/update-player/request-headers.adoc[]
 
 ==== Path parameters
 
@@ -948,6 +1071,10 @@ include::{snippets}/update-player/http-response.adoc[]
 === Deleting Player by id
 
 A `DELETE` is used to remove a Player resource.
+
+==== Request Headers
+
+include::{snippets}/delete-player/request-headers.adoc[]
 
 ==== Path parameters
 

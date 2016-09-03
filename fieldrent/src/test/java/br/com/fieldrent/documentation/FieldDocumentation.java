@@ -27,6 +27,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
+
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -81,7 +84,8 @@ public class FieldDocumentation {
     @Test
     public void listFields() throws Exception {
 
-        this.mockMvc.perform(get("/fields").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/fields").accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -94,7 +98,11 @@ public class FieldDocumentation {
                                 fieldWithPath("[].schedules").description("")
                         )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
 
     }
 
@@ -102,7 +110,8 @@ public class FieldDocumentation {
     public void getField() throws Exception {
 
         Long fieldId = fieldRepository.findAll().get(0).getId();
-        this.mockMvc.perform(get("/field/{id}", fieldId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/field/{id}", fieldId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -120,7 +129,11 @@ public class FieldDocumentation {
                     pathParameters(
                             parameterWithName("id").description("The database entity id"))
                     )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -129,6 +142,7 @@ public class FieldDocumentation {
 
         this.mockMvc.perform(post("/field")
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .content(testMock.createField()))
                 .andExpect(status().isCreated())
                 .andDo(this.document.snippets(
@@ -141,7 +155,11 @@ public class FieldDocumentation {
                                 fields.withPath("schedules").description("")
                         )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -151,6 +169,7 @@ public class FieldDocumentation {
         ConstrainedFields fields = new ConstrainedFields(Field.class);
 
         this.mockMvc.perform(put("/field/{id}", toUpdateField.getId())
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(testMock.updateField(toUpdateField)))
                 .andExpect(status().isNoContent())
@@ -170,19 +189,29 @@ public class FieldDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                requestHeaders(
+                        headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                .description("The token to send with every request."))));
+
     }
 
     @Test
     public void deleteField() throws Exception {
         Long fieldId = fieldRepository.findAll().get(0).getId();
-        this.mockMvc.perform(delete("/field/{id}", fieldId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(delete("/field/{id}", fieldId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     private static class ConstrainedFields {

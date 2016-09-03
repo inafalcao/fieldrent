@@ -46,14 +46,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/").permitAll()
-                //.antMatchers(HttpMethod.POST, "/client").permitAll()
-                //.antMatchers(HttpMethod.POST, "/client-company").permitAll()
-                //.antMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .antMatchers("/").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/client").permitAll()
+                .antMatchers(HttpMethod.POST, "/client-company").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
 
                 //.antMatchers("/**/add").hasRole("ADMIN")
-
-                //.antMatchers("/*").hasRole("USER");
+                .antMatchers("/**").hasRole("USER")
                 .anyRequest().hasRole("USER");
 
         // custom JSON based authentication by POST of {"email":"<name>","password":"<password>"} which sets the token header upon authentication

@@ -9,6 +9,7 @@ br/com/fieldrent/documentation/ClientCompanyDocumentation.class
 br/com/fieldrent/documentation/PlayerDocumentation.class
 br/com/fieldrent/documentation/ClientCompanyDocumentation$ConstrainedFields.class
 br/com/fieldrent/documentation/ReservationDocumentation.class
+br/com/fieldrent/documentation/FieldRentConstants.class
 br/com/fieldrent/documentation/FieldDocumentation$ConstrainedFields.class
 br/com/fieldrent/documentation/ReservationDocumentation$ConstrainedFields.class
 br/com/fieldrent/documentation/PlayerDocumentation$ConstrainedFields.class

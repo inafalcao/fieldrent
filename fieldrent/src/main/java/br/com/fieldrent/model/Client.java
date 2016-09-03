@@ -58,33 +58,27 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
     @Column(name = "monthly_subscriber")
     private Boolean monthlySubscriber;
 
-<<<<<<< HEAD
     @Column(name = "facebook_user")
     private Boolean isFacebookUser = false;
-=======
 
-
-
-
-
-
-
-    @NotNull
+    @JsonIgnore
     private boolean accountExpired;
 
-    @NotNull
+    @JsonIgnore
     private boolean accountLocked;
 
-    @NotNull
+    @JsonIgnore
     private boolean credentialsExpired;
 
-    @NotNull
+    @JsonIgnore
     private boolean accountEnabled;
 
     @Transient
+    @JsonIgnore
     private long expires;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Set<UserAuthority> authorities;
 
     public Client(String email, Date expires) {
@@ -96,7 +90,6 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
         this.email = username;
         this.password = password;
     }
->>>>>>> token
 
     public Client() {
         monthlySubscriber = false;
@@ -134,6 +127,7 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
         return email;
     }
@@ -211,12 +205,16 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
 
 
     @Override
-    @JsonIgnore
     public Set<UserAuthority> getAuthorities() {
         return authorities;
     }
 
+    public void setAuthorities(Set<UserAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
     // Use Roles as external API
+    @JsonIgnore
     public Set<UserRole> getRoles() {
         Set<UserRole> roles = EnumSet.noneOf(UserRole.class);
         if (authorities != null) {
@@ -227,6 +225,7 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
         return roles;
     }
 
+    @JsonIgnore
     public void setRoles(Set<UserRole> roles) {
         for (UserRole role : roles) {
             grantRole(role);
@@ -240,12 +239,14 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
         authorities.add(role.asAuthorityFor(this));
     }
 
+    @JsonIgnore
     public void revokeRole(UserRole role) {
         if (authorities != null) {
             authorities.remove(role.asAuthorityFor(this));
         }
     }
 
+    @JsonIgnore
     public boolean hasRole(UserRole role) {
         if (authorities != null) {
             authorities.contains(role.asAuthorityFor(this));
@@ -277,10 +278,12 @@ public class Client extends br.com.fieldrent.model.Entity implements UserDetails
         return true;
     }
 
+    @JsonIgnore
     public long getExpires() {
         return expires;
     }
 
+    @JsonIgnore
     public void setExpires(long expires) {
         this.expires = expires;
     }

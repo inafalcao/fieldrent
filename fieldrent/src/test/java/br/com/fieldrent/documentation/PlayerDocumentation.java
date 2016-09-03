@@ -26,6 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -81,7 +83,8 @@ public class PlayerDocumentation {
     @Test
     public void listPlayers() throws Exception {
 
-        this.mockMvc.perform(get("/player/").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/player/").accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                                 responseFields(
@@ -91,14 +94,19 @@ public class PlayerDocumentation {
                                         fieldWithPath("[].level").description("")
                                 )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void getPlayer() throws Exception {
 
         Long playerId = playerRepository.findAll().get(0).getId();
-        this.mockMvc.perform(get("/player/{id}", playerId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/player/{id}", playerId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -113,7 +121,11 @@ public class PlayerDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -122,6 +134,7 @@ public class PlayerDocumentation {
         ConstrainedFields fields = new ConstrainedFields(PlayerDto.class);
         this.mockMvc.perform(post("/player")
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .content(testMock.createPlayer()))
                 .andExpect(status().isCreated())
                 .andDo(this.document.snippets(
@@ -131,7 +144,11 @@ public class PlayerDocumentation {
                                         fields.withPath("level").description("")
                                 )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
 
     }
 
@@ -141,6 +158,7 @@ public class PlayerDocumentation {
         ConstrainedFields fields = new ConstrainedFields(PlayerDto.class);
 
         this.mockMvc.perform(put("/player/{id}", toUpdatePlayer.getId())
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(testMock.updatePlayer(toUpdatePlayer)))
                 .andExpect(status().isNoContent())
@@ -157,19 +175,28 @@ public class PlayerDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void deletePlayer() throws Exception {
         Long playerId = playerRepository.findAll().get(0).getId();
-        this.mockMvc.perform(delete("/player/{id}", playerId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(delete("/player/{id}", playerId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     private static class ConstrainedFields {

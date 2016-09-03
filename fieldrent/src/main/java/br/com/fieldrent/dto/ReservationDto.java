@@ -16,8 +16,7 @@ import javax.validation.constraints.Size;
 /**
  * Created by inafalcao on 2/29/16.
  */
-@Entity
-@Table
+
 public class ReservationDto extends br.com.fieldrent.model.Entity {
 
     @NotNull

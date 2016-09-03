@@ -5,10 +5,7 @@ import br.com.fieldrent.model.ClientCompany;
 import br.com.fieldrent.model.Company;
 import br.com.fieldrent.repository.ClientCompanyRepository;
 import br.com.fieldrent.repository.CompanyRepository;
-<<<<<<< HEAD
-=======
 import br.com.fieldrent.security.UserRole;
->>>>>>> token
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

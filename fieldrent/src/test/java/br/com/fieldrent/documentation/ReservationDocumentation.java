@@ -30,6 +30,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
@@ -86,7 +88,8 @@ public class ReservationDocumentation {
     @Test
     public void listReservationsByDay() throws Exception {
 
-        this.mockMvc.perform(get("/reservations/{day}", "16-04-2016").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/{day}", "16-04-2016").accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                                 responseFields(
@@ -104,7 +107,11 @@ public class ReservationDocumentation {
                                 pathParameters(
                                         parameterWithName("day").description("The day and date with the format dd-MM-yyyy"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                    requestHeaders(
+                        headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                .description("The token to send with every request."))));
     }
 
     @Test
@@ -112,7 +119,8 @@ public class ReservationDocumentation {
 
         Company company = reservationRepository.findAll().get(0).getField().getCompany();
 
-        this.mockMvc.perform(get("/reservations/{day}/company/{cnpj}", "16-04-2016", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/{day}/company/{cnpj}", "16-04-2016", company.getCnpj()).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -132,13 +140,18 @@ public class ReservationDocumentation {
                                 parameterWithName("cnpj").description("The Company CNPJ.")
                         )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void listReservationsByStatus() throws Exception {
 
-        this.mockMvc.perform(get("/reservations/status/{status}", "OPEN").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/status/{status}", "OPEN").accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -156,7 +169,11 @@ public class ReservationDocumentation {
                         pathParameters(
                                 parameterWithName("status").description("Status can be either: OPEN, CONFIRMED or CANCELED."))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -164,7 +181,8 @@ public class ReservationDocumentation {
 
         Company company = reservationRepository.findAll().get(0).getField().getCompany();
 
-        this.mockMvc.perform(get("/reservations/company/{cnpj}", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/company/{cnpj}", company.getCnpj()).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -182,14 +200,19 @@ public class ReservationDocumentation {
                         pathParameters(
                                 parameterWithName("cnpj").description("The company CNPJ."))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void listReservationsByClient() throws Exception {
         Client client = reservationRepository.findAll().get(0).getClient();
 
-        this.mockMvc.perform(get("/reservations/client/{email}", client.getEmail()).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/client/{email}", client.getEmail()).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -207,7 +230,11 @@ public class ReservationDocumentation {
                         pathParameters(
                                 parameterWithName("email").description("The Client e-mail."))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -215,7 +242,8 @@ public class ReservationDocumentation {
 
         Company company = reservationRepository.findAll().get(0).getField().getCompany();
 
-        this.mockMvc.perform(get("/reservations/status/{status}/company/{cnpj}", "OPEN", company.getCnpj()).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservations/status/{status}/company/{cnpj}", "OPEN", company.getCnpj()).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -235,14 +263,19 @@ public class ReservationDocumentation {
                                 parameterWithName("cnpj").description("The company CNPJ.")
                         )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void getReservation() throws Exception {
 
         Long reservationId = reservationRepository.findAll().get(0).getId();
-        this.mockMvc.perform(get("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isOk())
                 .andDo(this.document.snippets(
                         responseFields(
@@ -260,7 +293,11 @@ public class ReservationDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
@@ -271,6 +308,7 @@ public class ReservationDocumentation {
         String tmock = testMock.createReservation();
         this.mockMvc.perform(post("/reservation")
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .content(testMock.createReservation()))
                 .andExpect(status().isCreated())
                 .andDo(this.document.snippets(
@@ -283,7 +321,11 @@ public class ReservationDocumentation {
                                         fields.withPath("reservationStatus").description("Status can be either: OPEN, CONFIRMED or CANCELED.")
                                 )
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
 
     }
 
@@ -294,6 +336,7 @@ public class ReservationDocumentation {
 
         this.mockMvc.perform(put("/reservation/{id}", toUpdateReservation.getId())
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc")
                 .content(testMock.updateReservation(toUpdateReservation)))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
@@ -312,19 +355,28 @@ public class ReservationDocumentation {
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     @Test
     public void deleteReservation() throws Exception {
         Long reservationId = reservationRepository.findAll().get(0).getId();
-        this.mockMvc.perform(delete("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(delete("/reservation/{id}", reservationId).accept(MediaType.APPLICATION_JSON)
+                .header(FieldRentConstants.AUTH_HEADER_NAME, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGllbnRAZW1haWwuY29tIiwiZXhwIjoxNDcxNzU0NTIxfQ.H_pN70_FDgKpG4wK8vLMVPANSuQAesNyLrgTaWaaoqc"))
                 .andExpect(status().isNoContent())
                 .andDo(this.document.snippets(
                         pathParameters(
                                 parameterWithName("id").description("The database entity id"))
                         )
-                );
+                )
+                .andDo(this.document.snippets(
+                        requestHeaders(
+                                headerWithName(FieldRentConstants.AUTH_HEADER_NAME)
+                                        .description("The token to send with every request."))));
     }
 
     private static class ConstrainedFields {
